@@ -4,3 +4,5 @@ En este trabajo se crea un sistema de transporte que posibilita llevar el regist
 Delfina Martin - Alejandro DeCicco
 
 [![Build Status](https://travis-ci.org/delfi-martin/TrabajoFinal.svg?branch=master)](https://travis-ci.org/delfi-martin/TrabajoFinal)
+
+[![Coverage Status](https://coveralls.io/repos/github/delfi-martin/TrabajoFinal/badge.svg?branch=master)](https://coveralls.io/github/delfi-martin/TrabajoFinal?branch=master)
