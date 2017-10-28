@@ -1,5 +1,7 @@
 <?php
 
 interface Viaje {
-	 public function infoViaje(identificador); //muestra el tipo de viaje (duracion,desde cual estacion a cual otra, franquicia) 
+	public function tipo($t); //muestra el tipo de viaje
+	public function monto($m); //muestra el monto de viaje
+	public function transporte($trans); //muestra el 
 }
