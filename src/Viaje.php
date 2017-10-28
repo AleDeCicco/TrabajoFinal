@@ -3,6 +3,7 @@ class viaje implements Viaje
       protected $tipo;
       protected $monto;
       protected $transporte;
+      protected $tiempo;
   
       public function __construct($tipo, $monto, $transporte)
       {
@@ -13,7 +14,7 @@ class viaje implements Viaje
   
       public function tipo()
       {
-            return $this->tipo:
+            return $this->tipo;
       }
 
       public function monto()
@@ -23,6 +24,16 @@ class viaje implements Viaje
 
       public function transporte()
       {
-            return $this->transporte:
+            return $this->transporte;
+      }
+
+      public function tiempo()
+      {
+            return $this->tiempo;
+      }
+
+      public function setTiempo($tiempo)
+      {
+            $this->tiempo = $tiempo;
       }
 }
