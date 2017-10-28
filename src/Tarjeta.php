@@ -47,7 +47,7 @@ class Tarjeta
 	public function viajesRealizados()
 	{
 
-
+		echo '<pre>'; print_r($ViajesRealizados); echo '</pre>';
 
 	}
 
