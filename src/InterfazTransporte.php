@@ -1,5 +1,5 @@
 <?php
 
 interface Transporte {
-	 public function nombre(); //muestra informacion sobre el vehiculo
+	 public function Nombre(); //muestra informacion sobre el vehiculo
 }
