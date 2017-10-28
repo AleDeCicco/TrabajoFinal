@@ -1,5 +1,7 @@
 <?php
 
+namespace TrabajoFinal;
+
 abstract class Transporte
 {
 	
