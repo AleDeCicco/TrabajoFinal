@@ -33,21 +33,19 @@ class Tarjeta
 	public function Saldo ()
 	{
 
-		echo "El Saldo es: $this->saldo";
+		return $this->saldo;
 
 	}
 
 	public function Pagar ( Vehiculo $Vehiculo , $timestamp )
 	{
-
-
-
+		
 	}
 
 	public function viajesRealizados()
 	{
 
-		echo '<pre>'; print_r($ViajesRealizados); echo '</pre>';
+		return $ViajesRealizados;
 
 	}
 
