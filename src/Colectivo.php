@@ -1,3 +1,7 @@
+<?php
+
+namespace TrabajoFinal;
+
 class Colectivo extends Transporte
 {
         public function __construct($nombre, $tipo)
