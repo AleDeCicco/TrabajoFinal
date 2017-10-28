@@ -1,3 +1,7 @@
+<?php
+
+namespace TrabajoFinal;
+
 class Bicicleta extends Transporte
 {
       public function __construct($nombre, $tipo)
