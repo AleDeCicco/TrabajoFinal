@@ -1,4 +1,4 @@
-class V implements Viaje {
+class viaje implements Viaje {
   
   protected $tipo;
   protected $monto;
