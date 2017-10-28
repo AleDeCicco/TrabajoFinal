@@ -1,3 +1,7 @@
+<?php
+
+namespace TrabajoFinal;
+
 class viaje implements Viaje 
 {
       protected $tipo;
