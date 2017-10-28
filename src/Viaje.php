@@ -12,28 +12,23 @@ class viaje implements Viaje
             $this->transporte = $transporte;
       }
   
-      public function tipo()
+      public function Tipo()
       {
             return $this->tipo;
       }
 
-      public function monto()
+      public function Monto()
       {
             return $this->monto;
       }
 
-      public function transporte()
+      public function Transporte()
       {
             return $this->transporte;
       }
 
-      public function tiempo()
+      public function Tiempo()
       {
             return $this->tiempo;
-      }
-
-      public function setTiempo($tiempo)
-      {
-            $this->tiempo = $tiempo;
       }
 }
