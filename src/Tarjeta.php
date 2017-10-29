@@ -7,7 +7,7 @@ class Tarjeta
 	
 	protected $saldo = 0;
 	protected $ViajesRealizados = [];
-	protected first = 0: //En cuanto se haga el primer viaje no vale mas 0
+	protected $first = 0; //En cuanto se haga el primer viaje no vale mas 0
 
 
 	public function Recargar ( $monto )
@@ -34,31 +34,176 @@ class Tarjeta
 		return $this->saldo;
 	}
 	
-	public function Pagar (Transporte $transporte , $tiempo )
+	public function Pagar (Transporte $transporte , $tiempo , $franquicia)
 	{
 		$transbordo = new \DateTime('now - 1 hour');
 
-		if ( $first )
+		$lastDate = (array_search(($transporte instanceof Bicicleta), array_reverse($ViajesRealizados)))->getDate();
+		$today    = \DateTime::createFromFormat('!Y-m-d', date('Y-m-d'));
+
+		$valor_boleto = 9.7;
+
+		
+		if( $transporte instanceof Bicicleta )
 		{
 
-			if ( end($this->ViajesRealizados) >= $transbordo )
+			if ( $lastDate->format('Y-m-d') != date('Y-m-d') )
 			{
-				$viaje_actual = new Viaje("transbordo",3.2,$transporte,$tiempo);
-				$this->saldo -= 3.2;
+
+				if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
+				{
+
+					$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);
+					$this->saldo -= ( 1.5 * $valor_boleto );	
+
+				}else
+				{
+
+					echo "No tiene saldo suficiente";
+
+				}
+
+			}
+
+			$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);			
+
+		}else
+		{
+
+			if ( $franquicia == 'Medio' )
+			{
+
+				if ( $first )
+				{
+
+					if ( end($this->ViajesRealizados) >= $transbordo )
+					{
+						
+						if ( ( $this->saldo - ( 0.5 * 0.3 * $valor_boleto ) ) >= 0 )
+						{
+
+							$viaje_actual = new Viaje("mediotransbordo",( 0.5 * 0.3 * $valor_boleto ),$transporte,$tiempo);
+							$this->saldo -= ( 0.5 * 0.3 * $valor_boleto );	
+
+						}else
+						{
+
+							echo "No tiene saldo suficiente";
+
+						}	
+
+					}
+					else
+					{
+						
+						if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
+						{
+
+							$viaje_actual = new Viaje("medionormal",( 0.5 * $valor_boleto ),$transporte,$tiempo);
+							$this->saldo -= ( 0.5 * $valor_boleto );
+
+						}else
+						{
+
+							echo "No tiene saldo suficiente";
+
+						}
+
+					}
 
 			}
 			else
 			{
-				$viaje_actual = new Viaje("normal",9.7,$transporte,$tiempo);
-				$this->saldo -= 9.7;
+				
+				if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
+				{
+
+					$viaje_actual = new Viaje("medionormal",( 0.5 * $valor_boleto ),$transporte,$tiempo);
+					$this->saldo -= ( 0.5 * $valor_boleto );
+					$this->first = 1;
+
+				}else
+				{
+
+					echo "No tiene saldo suficiente";
+
+				}
+
 			}
 
-		}
-		else
-		{
-			$viaje_actual = new Viaje("normal",9.7,$transporte,$tiempo);
-			$this->saldo -= 9.7;
-			$this->first = 1;
+			}elseif ( $franquicia == 'regular' )
+			{
+
+				if ( $first )
+				{
+
+				if ( end($this->ViajesRealizados) >= $transbordo )
+				{
+					
+					if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
+					{
+
+						$viaje_actual = new Viaje("transbordo",( 0.3 * $valor_boleto ),$transporte,$tiempo);
+						$this->saldo -= ( 0.3 * $valor_boleto );
+
+					}else
+					{
+
+						echo "No tiene saldo suficiente";
+
+					}
+
+				}
+				else
+				{
+					
+					if ( ( $this->saldo - $valor_boleto ) >= 0 )
+					{
+
+						$viaje_actual = new Viaje("normal",$valor_boleto,$transporte,$tiempo);
+						$this->saldo -= $valor_boleto;
+
+					}else
+					{
+
+						echo "No tiene saldo suficiente";
+
+					}
+
+				}
+
+				}
+				else
+				{
+					
+					if ( ( $this->saldo - $valor_boleto ) >= 0 )
+					{
+
+						$viaje_actual = new Viaje("normal",$valor_boleto,$transporte,$tiempo);
+						$this->saldo -= $valor_boleto;
+						$this->first = 1;
+
+					}else
+					{
+
+						echo "No tiene saldo suficiente";
+
+					}
+
+				}
+
+			} elseif ( "franquicia" == 'total' )
+			{
+
+				$viaje_actual = new Viaje("ftotal",$valor_boleto,$transporte,$tiempo);
+
+			}else
+			{
+
+				echo "El nombre de franquicia ingresado no corresponde a uno de los existentes";
+
+			}
+
 		}
 
 		array_push( $ViajesRealizados , $viaje_actual );
