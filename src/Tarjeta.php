@@ -2,7 +2,7 @@
 
 namespace TrabajoFinal;
 
-class Tarjeta
+class Tarjeta implements Inter_Tarjeta
 {
 	
 	protected $saldo = 0;
