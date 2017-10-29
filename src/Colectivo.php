@@ -9,5 +9,4 @@ class Colectivo extends Transporte
                 $this->nombre = $nombre;
                 $this->tipo = $tipo;
         }
-
 }
