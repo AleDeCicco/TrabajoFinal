@@ -2,7 +2,7 @@
 
 namespace TrabajoFinal;
 
-class viaje implements Viaje 
+class viaje implements Inter_Viaje 
 {
       protected $tipo;
       protected $monto;
