@@ -1,3 +1,7 @@
+<?php
+
+namespace TrabajoFinal;
+
 class Tarjeta implements Inter_Tarjeta
 {
 	
