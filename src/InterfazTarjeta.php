@@ -2,7 +2,7 @@
 
 namespace TrabajoFinal;
 
-interface Tarjeta {
+interface tarjeta {
 	 public function pagar(Transporte $transporte, $timestamp);
 	 public function recargar($monto);
 	 public function saldo();
