@@ -46,7 +46,10 @@ class Tarjeta implements Inter_Tarjeta
 		
 		$today    = \DateTime::createFromFormat('!Y-m-d', date('Y-m-d'));
 		$valor_boleto = 9.7;
-		
+		$pBoleto;
+		$etiqueta;
+		$bTransbordo;
+
 		if( $transporte instanceof Bicicleta )
 		{
 
@@ -58,29 +61,30 @@ class Tarjeta implements Inter_Tarjeta
 
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
 					{
-
-						$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);
-						$this->saldo -= ( 1.5 * $valor_boleto );	
-
+						$pBoleto=1.5;
+						$etiqueta="MiBiciTuBici";
+						$bTransbordo=1;
 					}
 					else
 					{
-
-						echo "No tiene saldo suficiente";
-
+						$pBoleto=0;
+						$etiqueta="imposible";
+						$bTransbordo=1;
 					}
-
 				} 
 				else
 				{
-					$viaje_actual = new Viaje("MiBiciTuBici",0,$transporte,$tiempo); //viaje sin precio por ser del mismo dia
+					$pBoleto=0;
+					$etiqueta="MiBiciTuBici";
+					$bTransbordo=1;
 				}
 			}
 			else
 			{
-				$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);
+				$pBoleto=1.5;
+				$etiqueta="MiBiciTuBici";
+				$bTransbordo=1;
 			}	
-
 		}
 		else
 		{
@@ -96,13 +100,15 @@ class Tarjeta implements Inter_Tarjeta
 						
 						if ( ( $this->saldo - ( 0.5 * 0.3 * $valor_boleto ) ) >= 0 )
 						{
-
-							$viaje_actual = new Viaje("mediotransbordo",( 0.5 * 0.3 * $valor_boleto ),$transporte,$tiempo);
-							$this->saldo -= ( 0.5 * 0.3 * $valor_boleto );	
+							$pBoleto=0.5;
+							$etiqueta="mediotransbordo";
+							$bTransbordo=0.3;
 						}
 						else
 						{
-							echo "No tiene saldo suficiente";
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
 						}	
 
 					}
@@ -112,35 +118,40 @@ class Tarjeta implements Inter_Tarjeta
 						if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
 						{
 
-							$viaje_actual = new Viaje("medionormal",( 0.5 * $valor_boleto ),$transporte,$tiempo);
-							$this->saldo -= ( 0.5 * $valor_boleto );
+							$pBoleto=0.5;
+							$etiqueta="medionormal";
+							$bTransbordo=1;
 						}
 						else
 						{
-							echo "No tiene saldo suficiente";
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
 						}
 
 					}
 
-			}
-			else
-			{
-				
-				if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
+				}
+				else
 				{
+					
+					if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
+					{
 
-					$viaje_actual = new Viaje("medionormal",( 0.5 * $valor_boleto ),$transporte,$tiempo);
-					$this->saldo -= ( 0.5 * $valor_boleto );
-					$this->first = 1;
+						$pBoleto=0.5;
+						$etiqueta="medionormal";
+						$bTransbordo=1;
+						$this->first = 1;
 
-				}else
-				{
-
-					echo "No tiene saldo suficiente";
+					}
+					else
+					{
+						$pBoleto=0;
+						$etiqueta="imposible";
+						$bTransbordo=1;
+					}
 
 				}
-
-			}
 
 			}
 			elseif ( $franquicia == 'regular' )
@@ -149,19 +160,40 @@ class Tarjeta implements Inter_Tarjeta
 				if ( $this->first )
 				{
 
-				if ( end($this->ViajesRealizados) >= $transbordo )
-				{
-					
-					if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
+					if ( end($this->ViajesRealizados) >= $transbordo )
 					{
+						
+						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
+						{
 
-						$viaje_actual = new Viaje("transbordo",( 0.3 * $valor_boleto ),$transporte,$tiempo);
-						$this->saldo -= ( 0.3 * $valor_boleto );
+							$pBoleto=0.3;
+							$etiqueta="transbordo";
+							$bTransbordo=1;
 
-					}else
+						}else
+						{
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
+						}
+
+					}
+					else
 					{
+						
+						if ( ( $this->saldo - $valor_boleto ) >= 0 )
+						{
 
-						echo "No tiene saldo suficiente";
+							$pBoleto=1;
+							$etiqueta="normal";
+							$bTransbordo=1;
+
+						}else
+						{
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
+						}
 
 					}
 
@@ -172,44 +204,29 @@ class Tarjeta implements Inter_Tarjeta
 					if ( ( $this->saldo - $valor_boleto ) >= 0 )
 					{
 
-						$viaje_actual = new Viaje("normal",$valor_boleto,$transporte,$tiempo);
-						$this->saldo -= $valor_boleto;
+						$pBoleto=1;
+						$etiqueta="normal";
+						$bTransbordo=1;
 
 					}else
 					{
-
-						echo "No tiene saldo suficiente";
-
+						$pBoleto=1;
+						$etiqueta="imposible";
+						$bTransbordo=1;
 					}
 
 				}
 
-				}
-				else
-				{
-					
-					if ( ( $this->saldo - $valor_boleto ) >= 0 )
-					{
-
-						$viaje_actual = new Viaje("normal",$valor_boleto,$transporte,$tiempo);
-						$this->saldo -= $valor_boleto;
-						$this->first = 1;
-
-					}else
-					{
-
-						echo "No tiene saldo suficiente";
-
-					}
-
-				}
-
-			} elseif ( "franquicia" == 'total' )
+			} 
+			elseif ( "franquicia" == 'total' )
 			{
 
-				$viaje_actual = new Viaje("ftotal",$valor_boleto,$transporte,$tiempo);
+				$pBoleto=0;
+				$etiqueta="ftotal";
+				$bTransbordo=1;
 
-			}else
+			}
+			else
 			{
 
 				echo "El nombre de franquicia ingresado no corresponde a uno de los existentes";
@@ -217,8 +234,14 @@ class Tarjeta implements Inter_Tarjeta
 			}
 
 		}
-
-		array_push( $this->ViajesRealizados , $viaje_actual );
+		if ($etiqueta == "imposible")
+			echo "El saldo es insuficiente";
+		else 
+		{
+			$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo );
+			$this->saldo -= $pBoleto * $bTransbordo * $valor_boleto;
+			array_push( $this->ViajesRealizados , $viaje_actual );
+		} 
 	}
 
 	public function viajesRealizados()
@@ -226,22 +249,3 @@ class Tarjeta implements Inter_Tarjeta
 		return $this->ViajesRealizados;
 	}
 }
-
-/* //debug
-$tarjeta = new Tarjeta;
-$tarjeta->recargar( 272 );
-echo $tarjeta->saldo();
-$colectivo144Negro = new Colectivo( '144 Negro' , 'Rosario Bus' );
-$tarjeta->pagar( $colectivo144Negro , '2016/06/30 22:50' , 'regular' );
-$tarjeta->saldo();
-$colectivo135 = new Colectivo( '135' , 'Rosario Bus' );
-$tarjeta->pagar( $colectivo135 , '2016/06/30 23:10' , 'regular' );
-$tarjeta->saldo();
-$bici = new Bicicleta( 1234 , 'Bicicleta' );
-$tarjeta->pagar( $bici , '2016/07/02 08:10' , 'regular' );
-foreach ($tarjeta->viajesRealizados() as $viaje) {
- $viaje->tipo();
- $viaje->monto();
- $viaje->transporte()->nombre();
-}
-*/
