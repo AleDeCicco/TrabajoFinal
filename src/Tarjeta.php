@@ -14,19 +14,16 @@ class Tarjeta implements Inter_Tarjeta
 	{
 		if ( $monto == 332 )
 		{
-
 			$this->saldo += 388;
-
-		}elseif( $monto == 624 )
+		}
+		elseif( $monto == 624 )
 		{
-
 			$this->saldo += 776;
-
-		}else
+		}
+		else
 		{
 			$this->saldo += $monto;
 		}
-
 	}
 
 	public function Saldo ()
@@ -43,16 +40,12 @@ class Tarjeta implements Inter_Tarjeta
 		$bicicleteo = array_search( ( $transporte instanceof Bicicleta ), array_reverse( $this->ViajesRealizados ) );
 		if ( $bicicleteo )
 		{
-
 			$lastDate = ( $this-ViajesRealizados( $bicicleteo ) )->getDate();
-
 		}
 
 		
 		$today    = \DateTime::createFromFormat('!Y-m-d', date('Y-m-d'));
-
 		$valor_boleto = 9.7;
-
 		
 		if( $transporte instanceof Bicicleta )
 		{
@@ -69,29 +62,33 @@ class Tarjeta implements Inter_Tarjeta
 						$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);
 						$this->saldo -= ( 1.5 * $valor_boleto );	
 
-					}else
+					}
+					else
 					{
 
 						echo "No tiene saldo suficiente";
 
 					}
 
+				} 
+				else
+				{
+					$viaje_actual = new Viaje("MiBiciTuBici",0,$transporte,$tiempo); //viaje sin precio por ser del mismo dia
 				}
-
-			}else
+			}
+			else
 			{
-
 				$viaje_actual = new Viaje("MiBiciTuBici",( 1.5 * $valor_boleto ),$transporte,$tiempo);
-
 			}	
 
-		}else
+		}
+		else
 		{
 
 			if ( $franquicia == 'Medio' )
 			{
 
-				if ( $first )
+				if ( $this->first )
 				{
 
 					if ( end($this->ViajesRealizados) >= $transbordo )
@@ -102,12 +99,10 @@ class Tarjeta implements Inter_Tarjeta
 
 							$viaje_actual = new Viaje("mediotransbordo",( 0.5 * 0.3 * $valor_boleto ),$transporte,$tiempo);
 							$this->saldo -= ( 0.5 * 0.3 * $valor_boleto );	
-
-						}else
+						}
+						else
 						{
-
 							echo "No tiene saldo suficiente";
-
 						}	
 
 					}
@@ -119,12 +114,10 @@ class Tarjeta implements Inter_Tarjeta
 
 							$viaje_actual = new Viaje("medionormal",( 0.5 * $valor_boleto ),$transporte,$tiempo);
 							$this->saldo -= ( 0.5 * $valor_boleto );
-
-						}else
+						}
+						else
 						{
-
 							echo "No tiene saldo suficiente";
-
 						}
 
 					}
@@ -149,7 +142,8 @@ class Tarjeta implements Inter_Tarjeta
 
 			}
 
-			}elseif ( $franquicia == 'regular' )
+			}
+			elseif ( $franquicia == 'regular' )
 			{
 
 				if ( $this->first )
