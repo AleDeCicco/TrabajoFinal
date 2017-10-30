@@ -14,7 +14,7 @@ class TarjetaTest extends TestCase {
 		for ( $i=0 ; $i<=624 ; $i++ )
 		{
 		
-			$tarjeta->recargar( $i );
+			$tarjeta->Recargar( $i );
 			
 			if ( $i == 332 )
 			{
