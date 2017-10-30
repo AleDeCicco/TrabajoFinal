@@ -32,8 +32,6 @@ class TrabajoFinalTest extends TestCase {
 				$this->assertEquals( $i , $tarjeta->Saldo() );
 
 			}
-			
-			$this->assertEquals
 		
 		}
 
