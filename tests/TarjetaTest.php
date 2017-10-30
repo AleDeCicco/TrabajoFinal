@@ -9,7 +9,7 @@ class TarjetaTest extends TestCase {
 	public function testRecarga()
 	{
 
-		$tarjeta = new Tarjeta;
+		$tarjeta = new Tarjeta();
 		
 		for ( $i=0 ; $i<=624 ; $i++ )
 		{
