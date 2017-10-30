@@ -32,6 +32,8 @@ class TarjetaTest extends TestCase {
 				$this->assertEquals( $i , $tarjeta->Saldo() );
 
 			}
+			
+			$tarjeta->Vaciar(); //Para que no acumule el saldo
 		
 		}
 
