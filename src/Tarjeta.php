@@ -25,6 +25,13 @@ class Tarjeta implements Inter_Tarjeta
 			$this->saldo += $monto;
 		}
 	}
+	
+	public function Vaciar ()
+	{
+		
+		$this->saldo = 0;
+		
+	}
 
 	public function Saldo ()
 	{
