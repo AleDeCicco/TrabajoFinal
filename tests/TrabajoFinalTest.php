@@ -11,7 +11,7 @@ class TrabajoFinalTest extends TestCase {
 
 		$tarjeta = new Tarjeta;
 		
-		for ( $i=0 , $i<=624 , $i++ )
+		for ( $i=0 ; $i<=624 ; $i++ )
 		{
 		
 			$tarjeta->recargar( $i );
