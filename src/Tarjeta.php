@@ -225,7 +225,7 @@ class Tarjeta implements Inter_Tarjeta
 				}
 
 			} 
-			elseif ( "franquicia" == 'total' )
+			elseif ( $franquicia == 'total' )
 			{
 
 				$pBoleto=0;
@@ -236,15 +236,18 @@ class Tarjeta implements Inter_Tarjeta
 			else
 			{
 
-				echo "El nombre de franquicia ingresado no corresponde a uno de los existentes";
+				$pBoleto=0;
+				$etiqueta="noexiste";
+				$bTransbordo=1;
 
 			}
 
 		}
 		if ($etiqueta == "imposible")
 			echo "El saldo es insuficiente";
-		else 
-		{
+		elseif ($etiqueta == 'noexiste')
+			echo "La franquicia no existe";
+		else {
 			$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo );
 			$this->saldo -= $pBoleto * $bTransbordo * $valor_boleto;
 			array_push( $this->ViajesRealizados , $viaje_actual );
