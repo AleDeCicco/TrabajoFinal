@@ -128,9 +128,11 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo144Negro , '2016/07/30 13:55' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+		
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
 
-
-		///////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////
 
 		//Regular diferentes líneas con transbordo (<1hora)
 
@@ -167,6 +169,8 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo144Negro , '2016/08/30 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+		
+		
 
 	}
 	
