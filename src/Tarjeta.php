@@ -47,7 +47,7 @@ class Tarjeta implements Inter_Tarjeta
 		$bicicleteo = array_search( ( $transporte instanceof Bicicleta ), array_reverse( $this->ViajesRealizados ) );
 		if ( $bicicleteo )
 		{
-			$lastDate = ( $this-ViajesRealizados( $bicicleteo ) )->getDate();
+			$lastDate = ( $this->ViajesRealizados[ $bicicleteo ] )->getDate();
 		}
 
 		
@@ -63,7 +63,7 @@ class Tarjeta implements Inter_Tarjeta
 			if( $lastDate )
 			{
 
-				if ( $lastDate->format('Y-m-d') != date('Y-m-d') )
+				if ( $lastDate->format('Y-m-d') != $today )
 				{
 
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
@@ -102,7 +102,7 @@ class Tarjeta implements Inter_Tarjeta
 				if ( $this->first )
 				{
 
-					if ( end($this->ViajesRealizados) >= $transbordo )
+					if ( end($this->ViajesRealizados)->Tiempo() >= $transbordo )
 					{
 						
 						if ( ( $this->saldo - ( 0.5 * 0.3 * $valor_boleto ) ) >= 0 )
@@ -183,7 +183,7 @@ class Tarjeta implements Inter_Tarjeta
 				if ( $this->first )
 				{
 
-					if ( end($this->ViajesRealizados) >= $transbordo )
+					if ( end($this->ViajesRealizados)->Tiempo() >= $transbordo )
 					{
 						
 						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
@@ -241,7 +241,7 @@ class Tarjeta implements Inter_Tarjeta
 
 					}else
 					{
-						$pBoleto=1;
+						$pBoleto=0;
 						$etiqueta="imposible";
 						$bTransbordo=1;
 					}
