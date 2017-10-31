@@ -96,7 +96,7 @@ class Tarjeta implements Inter_Tarjeta
 		else
 		{
 
-			if ( $franquicia == 'Medio' )
+			if ( $franquicia == 'medio' )
 			{
 
 				if ( $this->first )
