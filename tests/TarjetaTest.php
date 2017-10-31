@@ -44,8 +44,8 @@ class TarjetaTest extends TestCase {
 
 		$colectivo144Negro = new Colectivo( '144 Negro' , 'Rosario Bus' );
 		$colectivo135 = new Colectivo( '135' , 'Rosario Bus' );
-		$bici = new Bicicleta( 1234 , 'Bicicleta' );
-		$bici = new Bicicleta( 5678 , 'Bicicleta' );
+		$bici1234 = new Bicicleta( 1234 , 'Bicicleta' );
+		$bici5678 = new Bicicleta( 5678 , 'Bicicleta' );
 
 		$monto = 200;
 
@@ -223,6 +223,36 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo135 , '2016/09/30 13:55' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+
+		/////////////////////////////////////////////////////////////////
+
+		// Bicis en días diferentes
+
+		$tarjeta1->pagar( $bici1234 , '2016/09/10 12:50' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $bici5678 , '2016/09/11 12:50' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * 1.5 ) * 2 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Bicis en el mismo día
+
+		$tarjeta1->pagar( $bici1234 , '2016/09/15 12:50' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $bici5678 , '2016/09/15 12:50' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
 	}
 	
