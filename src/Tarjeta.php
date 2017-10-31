@@ -65,6 +65,7 @@ class Tarjeta implements Inter_Tarjeta
 	public function Pagar (Transporte $transporte , $tiempo , $franquicia)
 	{
 		$uViaje = array_search( ( $transporte instanceof Colectivo ), array_reverse( $this->ViajesRealizados ) );
+		$tiempoUViaje = false;
 		if($uViaje)
 			$tiempoUViaje = strtotime( $uViaje->Tiempo() );
 		$fecha = strtotime($tiempo);
@@ -100,7 +101,7 @@ class Tarjeta implements Inter_Tarjeta
 			$tTransbordo = 3600;
 		}
 
-		if ( $fecha - $tiempoUViaje <= $tTransbordo)
+		if ( $tiempoUViaje && $fecha - $tiempoUViaje <= $tTransbordo)
 			$pTransbordo = 0.6;
 		else
 			$pTransbordo = 1;
