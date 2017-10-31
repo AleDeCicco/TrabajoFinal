@@ -309,7 +309,7 @@ class Tarjeta implements Inter_Tarjeta
 					if ( $pTransbordo == 0.6 )
 					{
 						
-						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
+						if ( ( $this->saldo - ( $pTransbordo * $valor_boleto ) ) >= 0 )
 						{
 							if ($uViaje
 							    ->Transporte()->Nombre() != $transporte->Nombre()){
