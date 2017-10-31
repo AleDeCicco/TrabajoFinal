@@ -306,7 +306,7 @@ class Tarjeta implements Inter_Tarjeta
 				if ( $this->first )
 				{
 
-					if ( $uViaje->Tiempo() >= $transbordo )
+					if ( $pTransbordo == 0.6 )
 					{
 						
 						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
@@ -331,12 +331,14 @@ class Tarjeta implements Inter_Tarjeta
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
-									} elseif ($plus == 1){
+										
+									} elseif ($plus == 1) {
 
 										$plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus2";
 										$bTransbordo=1;
+										
 									} else{
 
 										$pBoleto=0;
