@@ -108,7 +108,7 @@ class Tarjeta implements Inter_Tarjeta
 						if ( ( $this->saldo - ( 0.5 * 0.3 * $valor_boleto ) ) >= 0 )
 						{
 							if (end($this->ViajesRealizados)
-							    ->Transporte()->Nombre() != $transporte->Nombre(){
+							    ->Transporte()->Nombre() != $transporte->Nombre()){
 								    
 								$pBoleto=0.5;
 								$etiqueta="mediotransbordo";
@@ -189,7 +189,7 @@ class Tarjeta implements Inter_Tarjeta
 						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
 						{
 							if (end($this->ViajesRealizados)
-							    ->Transporte()->Nombre() != $transporte->Nombre(){
+							    ->Transporte()->Nombre() != $transporte->Nombre()){
 								    
 								$pBoleto=1;
 								$etiqueta="transbordo";
