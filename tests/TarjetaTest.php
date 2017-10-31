@@ -128,11 +128,12 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo144Negro , '2016/07/30 13:55' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
-		
+
+
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
-		/////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////
 
 		//Regular diferentes líneas con transbordo (<1hora)
 
@@ -169,8 +170,59 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo144Negro , '2016/08/30 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
-		
-		
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		///////////////////////////////////////////////////////////////////////
+
+		//Regular + Transbordo + Regular
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 10:50' , 'regular' );
+
+		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 11:45' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.3 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 11:55' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.3 + 9.7) , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Medio + Transbordo + Medio
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 11:50' , 'medio' );
+
+		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 12:45' , 'medio' );
+
+		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.3 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 12:55' , 'medio' );
+
+		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.3 + 0.5 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Total + Transbordo + Total
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 12:50' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 13:45' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 13:55' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
 	}
 	
