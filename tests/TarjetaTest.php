@@ -115,6 +115,9 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->pagar( $colectivo144Negro , '2016/07/30 23:55' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
+		
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
 
 		//Total diferentes líneas sin transbordo(>1hora)
 
