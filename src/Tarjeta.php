@@ -107,9 +107,25 @@ class Tarjeta implements Inter_Tarjeta
 						
 						if ( ( $this->saldo - ( 0.5 * 0.3 * $valor_boleto ) ) >= 0 )
 						{
-							$pBoleto=0.5;
-							$etiqueta="mediotransbordo";
-							$bTransbordo=0.3;
+							if (end($this->ViajesRealizados)
+							    ->Transporte()->Nombre() != $transporte->Nombre(){
+								    
+								$pBoleto=0.5;
+								$etiqueta="mediotransbordo";
+								$bTransbordo=0.3;
+							} else {
+								
+								if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 ){
+									$boleto=0.5;
+									$etiqueta="medio";
+									$bTransbordo = 1;
+								} else {
+								
+									$pBoleto=0;
+									$etiqueta="imposible";
+									$bTransbordo=1;	
+								}
+							}
 						}
 						else
 						{
@@ -172,18 +188,26 @@ class Tarjeta implements Inter_Tarjeta
 						
 						if ( ( $this->saldo - ( 0.3 * $valor_boleto ) ) >= 0 )
 						{
-
-							$pBoleto=0.3;
-							$etiqueta="transbordo";
-							$bTransbordo=1;
-
-						}else
-						{
-							$pBoleto=0;
-							$etiqueta="imposible";
-							$bTransbordo=1;
+							if (end($this->ViajesRealizados)
+							    ->Transporte()->Nombre() != $transporte->Nombre(){
+								    
+								$pBoleto=1;
+								$etiqueta="transbordo";
+								$bTransbordo=0.3;
+							} else {
+								
+								if ( ( $this->saldo - ( $valor_boleto ) ) >= 0 ){
+									$boleto=1;
+									$etiqueta="regular";
+									$bTransbordo = 1;
+								} else {
+								
+									$pBoleto=0;
+									$etiqueta="imposible";
+									$bTransbordo=1;	
+								}
+							}
 						}
-
 					}
 					else
 					{
