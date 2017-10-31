@@ -176,15 +176,15 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
-		///////////////////////////////////////////////////////////////////////**
+		///////////////////////////////////////////////////////////////////////
 
 		//Regular diferentes líneas con transbordo (<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/08/30 10:50' , 'regular' );
+		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/08/30 11:45' , 'regular' );
+		$tarjeta1->pagar( $colectivo135 , '2017/10/23 11:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.6 ) , $tarjeta1->Saldo() );
 
@@ -193,11 +193,11 @@ class TarjetaTest extends TestCase {
 
 		//Medio diferentes líneas con transbordo(<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/08/30 11:50' , 'medio' );
+		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/08/30 12:45' , 'medio' );
+		$tarjeta1->pagar( $colectivo135 , '2017/10/23 12:45' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.6 ) , $tarjeta1->Saldo() );
 
@@ -206,18 +206,18 @@ class TarjetaTest extends TestCase {
 
 		//Total diferentes líneas con transbordo(<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/08/30 12:50' , 'total' );
+		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/08/30 13:45' , 'total' );
+		$tarjeta1->pagar( $colectivo135 , '2017/10/23 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
-		///////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////**
 
 		//Regular + Transbordo + Regular
 
