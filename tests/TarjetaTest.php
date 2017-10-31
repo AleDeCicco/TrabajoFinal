@@ -47,7 +47,7 @@ class TarjetaTest extends TestCase {
 		$bici = new Bicicleta( 1234 , 'Bicicleta' );
 		$bici = new Bicicleta( 5678 , 'Bicicleta' );
 
-		$monto = 200
+		$monto = 200;
 
 		$tarjeta1 = new Tarjeta();
 		$tarjeta1->recargar( $monto );
