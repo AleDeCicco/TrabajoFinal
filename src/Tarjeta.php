@@ -283,10 +283,4 @@ class Tarjeta implements Inter_Tarjeta
 		return $this->ViajesRealizados;
 	}
 	
-	public function ReiniciarTarjeta()
-	{
-
-		$this->ViajesRealizados = [];
-
-	}
 }
