@@ -447,9 +447,14 @@ class Tarjeta implements Inter_Tarjeta
 
 		} else {
 			
-			if ($etiqueta != 'viajeplus1' && $etiqueta != 'viajeplus2')
+			if ($etiqueta != 'viajeplus1' && $etiqueta != 'viajeplus2'){
 			
-			$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo);
+				$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo);
+				$this->saldo -= $pBoleto * $bTransbordo * $valor_boleto;
+			} else {
+
+				$viaje_actual = new Viaje ($etiqueta , $valor_boleto , $transporte , $tiempo);
+			}
 
 			array_push( $this->ViajesRealizados , $viaje_actual );
 
