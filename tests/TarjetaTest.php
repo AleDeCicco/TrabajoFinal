@@ -104,15 +104,25 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
-		//Regular diferentes líneas sin trnsbordo(>1hora)
+		//Medio diferentes líneas sin transbordo(>1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:50' , 'regular' );
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:55' , 'regular' );
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:55' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
+
+		//Total diferentes líneas sin transbordo(>1hora)
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:50' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:55' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
 
 	}
