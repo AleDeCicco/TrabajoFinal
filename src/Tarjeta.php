@@ -5,10 +5,17 @@ namespace TrabajoFinal;
 class Tarjeta implements Inter_Tarjeta
 {
 	
-	protected $saldo = 0;
+	protected $saldo;
 	protected $ViajesRealizados = [];
-	protected $first = 0; //En cuanto se haga el primer viaje no vale mas 0
+	protected $first; //En cuanto se haga el primer viaje no vale mas 0
+	protected $id;
 
+	public function __construct($id){
+
+		$this->saldo = 0;
+		$this->first = 0;
+		$this->id = $id;
+	}
 
 	public function Recargar ( $monto )
 	{
@@ -36,6 +43,16 @@ class Tarjeta implements Inter_Tarjeta
 	public function Saldo ()
 	{
 		return $this->saldo;
+	}
+
+	public function viajesRealizados()
+	{
+		return $this->ViajesRealizados;
+	}
+
+	public function Id()
+	{
+		return $this->id;
 	}
 	
 	public function Pagar (Transporte $transporte , $tiempo , $franquicia)
@@ -267,20 +284,24 @@ class Tarjeta implements Inter_Tarjeta
 			}
 
 		}
-		if ($etiqueta == "imposible")
+		if ($etiqueta == "imposible"){
+		
 			echo "El saldo es insuficiente";
-		elseif ($etiqueta == 'noexiste')
+			return false;
+
+		} elseif ($etiqueta == 'noexiste'){
+		
 			echo "La franquicia no existe";
-		else {
-			$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo );
+			return false;
+
+		} else {
+		
+			$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo);
 			$this->saldo -= $pBoleto * $bTransbordo * $valor_boleto;
 			array_push( $this->ViajesRealizados , $viaje_actual );
-		} 
-	}
 
-	public function viajesRealizados()
-	{
-		return $this->ViajesRealizados;
+			return new Boleto ( $viaje_actual , $this );
+		} 
 	}
 	
 }
