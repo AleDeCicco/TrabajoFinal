@@ -58,7 +58,7 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:45' , 'regular' );
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
 
@@ -71,9 +71,9 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:45' , 'medio' );
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:45' , 'medio' );
 
-		$this->assertEquals( $monto - ( 9.7 * 0.5 ) , $tarjeta1->Saldo() );
+		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
@@ -84,7 +84,7 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 22:45' , 'total' );
+		$tarjeta1->pagar( $colectivo144Negro , '2016/06/30 23:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
