@@ -1,7 +1,5 @@
 <?php
 namespace TrabajoFinal;
-
-
 class Tarjeta implements Inter_Tarjeta
 {
 	
@@ -76,24 +74,24 @@ class Tarjeta implements Inter_Tarjeta
 		$fecha = strtotime($tiempo);
 		if ( intval(strftime('%w',$fecha)) == 6 
 			&& intval(strftime('%H',$fecha)) < 22 
-			&& intval(strftime('%w',$fecha)) >= 14 ){
+			&& intval(strftime('%H',$fecha)) >= 14 ){
 			$tTransbordo = 5400;
 		
 		} elseif ( intval(strftime('%w',$fecha)) == 6 
 			&& intval(strftime('%H',$fecha)) < 14 
-			&& intval(strftime('%w',$fecha)) >= 6 ){
+			&& intval(strftime('%H',$fecha)) >= 6 ){
 			$tTransbordo = 3600;
 		
 		} elseif ( intval(strftime('%w',$fecha)) == 0 
 			&& intval(strftime('%H',$fecha)) < 22 
-			&& intval(strftime('%w',$fecha)) >= 6 ){
+			&& intval(strftime('%H',$fecha)) >= 6 ){
 			$tTransbordo = 5400;
-		} elseif ( intval(strftime('%H',$fecha)) >= 22 || intval(strftime('%w',$fecha)) < 6 ){
+		} elseif ( intval(strftime('%H',$fecha)) >= 22 || intval(strftime('%H',$fecha)) < 6 ){
 			$tTransbordo = 5400;
 		} elseif ( intval(strftime('%w',$fecha)) > 0 
 			&& intval(strftime('%w',$fecha)) < 6
 			&& intval(strftime('%H',$fecha)) < 22 
-			&& intval(strftime('%w',$fecha)) >= 6 ){
+			&& intval(strftime('%H',$fecha)) >= 6 ){
 			$tTransbordo = 3600;
 		}
 		if ( $tiempoUViaje && (($fecha - $tiempoUViaje) <= $tTransbordo))
@@ -101,9 +99,7 @@ class Tarjeta implements Inter_Tarjeta
 		else
 			$pTransbordo = 1;
 		$lastDate = False;
-
 		$bicicleteo = false;
-
 		for($i = sizeof($this->ViajesRealizados)-1 ; $i>=0 ; $i=$i-1){
 			
 			if ($this->ViajesRealizados[$i] == 'Bicicleta'){
@@ -267,17 +263,13 @@ class Tarjeta implements Inter_Tarjeta
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
-
 						} elseif ($plus == 1){
-
 							$plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus2";
 							$bTransbordo=1;
 							$this->first = 1;
-
 						} else{
-
 							$pBoleto=0;
 							$etiqueta="imposible";
 							$bTransbordo=1;
@@ -291,7 +283,6 @@ class Tarjeta implements Inter_Tarjeta
 				{
 					if ( $pTransbordo == 0.6 )
 					{
-			
 						if ( ( $this->saldo - ( $pTransbordo * $valor_boleto ) ) >= 0 )
 						{
 							if ($uViaje
@@ -368,9 +359,7 @@ class Tarjeta implements Inter_Tarjeta
 						$etiqueta="normal";
 						$bTransbordo=1;
 						$this->first = 1;
-
 					} else {
-
 						if ( $plus == 0){
 							
 							$plus += 1;
@@ -378,17 +367,13 @@ class Tarjeta implements Inter_Tarjeta
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
-
 						} elseif ($plus == 1) {
-
 							$plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus2";
 							$bTransbordo=1;
 							$this->first = 1;
-
 						} else{
-
 							$pBoleto=0;
 							$etiqueta="imposible";
 							$bTransbordo=1;
@@ -400,25 +385,20 @@ class Tarjeta implements Inter_Tarjeta
 				$etiqueta="ftotal";
 				$bTransbordo=1;
 				$this->first = 1;
-
 			} else {
-
 				$pBoleto=0;
 				$etiqueta="noexiste";
 				$bTransbordo=1;
 			}
 		}
-
 		if ($etiqueta == "imposible"){
 		
 			echo "El saldo es insuficiente";
 			return false;
-
 		} elseif ($etiqueta == 'noexiste'){
 		
 			echo "La franquicia no existe";
 			return false;
-
 		} else {
 			
 			if ($etiqueta != 'viajeplus1' && $etiqueta != 'viajeplus2'){
@@ -434,3 +414,4 @@ class Tarjeta implements Inter_Tarjeta
 		} 
 	}	
 }
+
