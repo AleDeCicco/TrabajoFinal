@@ -149,13 +149,13 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
-		//Medio diferentes líneas sin transbordo(Fuera de horario)
+		//Medio diferentes líneas sin transbordo(Excede 90 min)
 
 		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 02:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 02:60' , 'medio' );
+		$tarjeta1->pagar( $colectivo135 , '2017/10/23 04:30' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
