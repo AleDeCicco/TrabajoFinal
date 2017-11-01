@@ -6,19 +6,15 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 	
+    $colectivo144Negro = new Colectivo( '144 Negro' , 'Rosario Bus' );
+	$colectivo135 = new Colectivo( '135' , 'Rosario Bus' );
+	$bici1234 = new Bicicleta( 1234 , 'Bicicleta' );
+	$bici5678 = new Bicicleta( 5678 , 'Bicicleta' );
 
 	public function setUp()
     {
 
-        $colectivo144Negro = new Colectivo( '144 Negro' , 'Rosario Bus' );
-		$colectivo135 = new Colectivo( '135' , 'Rosario Bus' );
-		$bici1234 = new Bicicleta( 1234 , 'Bicicleta' );
-		$bici5678 = new Bicicleta( 5678 , 'Bicicleta' );
-
 		$monto = 200;
-
-		$tarjeta1 = new Tarjeta(1);
-		$tarjeta1->recargar( $monto );
 
     }
 
@@ -58,6 +54,9 @@ class TarjetaTest extends TestCase {
 
 	public function testPago1()
 	{
+
+		$tarjeta1 = new Tarjeta(1);
+		$tarjeta1->recargar( $monto );
 
 		/////////////////////////////////////////////////////////////////////*
 
