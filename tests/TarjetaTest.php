@@ -316,7 +316,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1->Pagar( $colectivo135 , '2017/08/19 12:30' , 'regular' );
 
-		$this->assertEquals( $monto - ( 9.7 * ( 1 + 0.6 ) ) , $tarjeta1->Saldo() );
+		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
@@ -329,7 +329,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1->Pagar( $colectivo135 , '2017/08/19 14:20' , 'medio' );
 
-		$this->assertEquals( $monto - ( 9.7 * ( 0.5 + 0.5 * 0.6 ) ) , $tarjeta1->Saldo() );
+		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
