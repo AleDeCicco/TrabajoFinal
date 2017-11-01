@@ -19,7 +19,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1 = new Tarjeta(1);
 		$tarjeta1->recargar( $monto );
-		
+
     }
 
 
@@ -55,8 +55,8 @@ class TarjetaTest extends TestCase {
 		}
 
 	}
-	
-	public function testPago()
+
+	public function testPago1()
 	{
 
 		/////////////////////////////////////////////////////////////////////*
@@ -99,6 +99,11 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
+
+	}
+	
+	public function testPago2()
+	{
 
 		///////////////////////////////////////////////////////////////////////*
 
