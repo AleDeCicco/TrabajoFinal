@@ -55,11 +55,11 @@ class TarjetaTest extends TestCase {
 
 		//Regular misma línea (Sin transbordo)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:45' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 11:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
 
@@ -68,11 +68,11 @@ class TarjetaTest extends TestCase {
 
 		//Medio misma línea (Sin transbordo)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/10/23 12:45' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2016/10/23 12:45' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
@@ -81,11 +81,11 @@ class TarjetaTest extends TestCase {
 
 		//total (franquicia jubilados) misma línea (Sin transbordo)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 13:45' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
@@ -96,11 +96,11 @@ class TarjetaTest extends TestCase {
 
 		//Regular diferentes líneas sin transbordo (>1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:55' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 11:55' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
 
@@ -109,11 +109,11 @@ class TarjetaTest extends TestCase {
 
 		//Medio diferentes líneas sin transbordo(>1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 12:55' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 12:55' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
@@ -122,11 +122,11 @@ class TarjetaTest extends TestCase {
 
 		//Total diferentes líneas sin transbordo(>1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 13:45' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
@@ -138,11 +138,11 @@ class TarjetaTest extends TestCase {
 
 		//Regular diferentes líneas sin transbordo (Domingo)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/22 22:40' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/22 22:40' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 22:50' , 'regular' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 22:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
 
@@ -151,11 +151,11 @@ class TarjetaTest extends TestCase {
 
 		//Medio diferentes líneas sin transbordo(Excede 90 min)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 02:50' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 02:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 04:30' , 'medio' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 04:30' , 'medio' );
 
 		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
 
@@ -164,11 +164,11 @@ class TarjetaTest extends TestCase {
 
 		//Total diferentes líneas sin transbordo(Fuera de horario)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 05:20' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 05:20' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 05:40' , 'total' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 05:40' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
@@ -180,11 +180,11 @@ class TarjetaTest extends TestCase {
 
 		//Regular diferentes líneas con transbordo (<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 10:50' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 11:45' , 'regular' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 11:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.6 ) , $tarjeta1->Saldo() );
 
@@ -193,11 +193,11 @@ class TarjetaTest extends TestCase {
 
 		//Medio diferentes líneas con transbordo(<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 11:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 12:45' , 'medio' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 12:45' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.6 ) , $tarjeta1->Saldo() );
 
@@ -206,11 +206,11 @@ class TarjetaTest extends TestCase {
 
 		//Total diferentes líneas con transbordo(<1hora)
 
-		$tarjeta1->pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/23 12:50' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2017/10/23 13:45' , 'total' );
+		$tarjeta1->Pagar( $colectivo135 , '2017/10/23 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
@@ -221,15 +221,15 @@ class TarjetaTest extends TestCase {
 
 		//Regular + Transbordo + Regular
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 10:50' , 'regular' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2016/09/30 10:50' , 'regular' );
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 11:45' , 'regular' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 11:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.6 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 11:55' , 'regular' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 11:55' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 + 9.7 * 0.6 + 9.7) , $tarjeta1->Saldo() );
 
@@ -238,15 +238,15 @@ class TarjetaTest extends TestCase {
 
 		//Medio + Transbordo + Medio
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 11:50' , 'medio' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2016/09/30 11:50' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 12:45' , 'medio' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 12:45' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.6 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 12:55' , 'medio' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 12:55' , 'medio' );
 
 		$this->assertEquals( $monto - 9.7 * ( 0.5 + 0.5 * 0.6 + 0.5 ) , $tarjeta1->Saldo() );
 
@@ -255,15 +255,15 @@ class TarjetaTest extends TestCase {
 
 		//Total + Transbordo + Total
 
-		$tarjeta1->pagar( $colectivo144Negro , '2016/09/30 12:50' , 'total' );
+		$tarjeta1->Pagar( $colectivo144Negro , '2016/09/30 12:50' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 13:45' , 'total' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 13:45' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $colectivo135 , '2016/09/30 13:55' , 'total' );
+		$tarjeta1->Pagar( $colectivo135 , '2016/09/30 13:55' , 'total' );
 
 		$this->assertEquals( $monto , $tarjeta1->Saldo() );
 
@@ -280,11 +280,11 @@ class TarjetaTest extends TestCase {
 
 		// Bicis en días diferentes
 
-		$tarjeta1->pagar( $bici1234 , '2016/09/10 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici1234 , '2016/09/10 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $bici5678 , '2016/09/11 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici5678 , '2016/09/11 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) * 2 , $tarjeta1->Saldo() );
 
@@ -293,11 +293,11 @@ class TarjetaTest extends TestCase {
 
 		//Bicis en el mismo día
 
-		$tarjeta1->pagar( $bici1234 , '2016/09/15 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici1234 , '2016/09/15 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->pagar( $bici5678 , '2016/09/15 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici5678 , '2016/09/15 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
