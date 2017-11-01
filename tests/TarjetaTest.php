@@ -231,7 +231,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/10/28 11:45' , 'regular' );
 
-		$this->assertEquals( $monto - 9.7 ( 1 + 0.6 ) , $tarjeta1->Saldo() );
+		$this->assertEquals( $monto - 9.7 * ( 1 + 0.6 ) , $tarjeta1->Saldo() );
 
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
