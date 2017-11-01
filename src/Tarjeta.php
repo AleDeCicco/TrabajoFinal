@@ -122,7 +122,7 @@ class Tarjeta implements Inter_Tarjeta
 		{
 			if( $lastDate )
 			{
-				if ( intval(strftime("%m%d%y",$lastDate)) != intval(strftime("%m%d%y",$tiempo)))
+				if ( intval(strftime("%m%d%y",strtotime($lastDate))) != intval(strftime("%m%d%y",strtotime($tiempo))))
 				{
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
 					{
