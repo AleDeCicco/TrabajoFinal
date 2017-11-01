@@ -38,6 +38,7 @@ class Tarjeta implements Inter_Tarjeta
 		$this->saldo = 0;
 		$this->first = 0;
 		$this->plus = 0;
+		$this->ViajesRealizados = array();
 		
 	}
 	public function Saldo ()
