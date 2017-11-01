@@ -348,6 +348,92 @@ class TarjetaTest extends TestCase {
 		$tarjeta1->Vaciar();
 		$tarjeta1->recargar( $monto );
 
+		///////////////////////////////////////////////////////////////////////*
+
+		//Regular diferentes líneas sin transbordo (>90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/20 19:20' , 'regular' );
+
+		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/20 21:00' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Medio diferentes líneas sin transbordo(>90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/20 19:20' , 'medio' );
+
+		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/20 21:00' , 'medio' );
+
+		$this->assertEquals( $monto - ( 9.7 * 0.5 ) * 2 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Total diferentes líneas sin transbordo(>90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/20 19:20' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/20 21:00' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+
+		///////////////////////////////////////////////////////////////////////*
+
+		//Regular diferentes líneas con transbordo (<90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/19 14:50' , 'regular' );
+
+		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/19 16:10' , 'regular' );
+
+		$this->assertEquals( $monto - ( 9.7 * ( 1 + 0.6 ) ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Medio diferentes líneas con transbordo(<90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/19 16:20' , 'medio' );
+
+		$this->assertEquals( $monto - 9.7 * 0.5 , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/19 17:40' , 'medio' );
+
+		$this->assertEquals( $monto - ( 9.7 * ( 0.5 + 0.5 * 0.6 ) ) , $tarjeta1->Saldo() );
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+		//Total diferentes líneas con transbordo(<90min) Domingos de 6 a 22 hs
+
+		$tarjeta1->Pagar( $colectivo144Negro , '2017/08/19 17:50' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+		$tarjeta1->Pagar( $colectivo135 , '2017/08/19 19:10' , 'total' );
+
+		$this->assertEquals( $monto , $tarjeta1->Saldo() );
+
+
+		$tarjeta1->Vaciar();
+		$tarjeta1->recargar( $monto );
+
+
 
 		// Bicis en días diferentes
 
