@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class TarjetaTest extends TestCase {
 	
 
-	protected function setUp()
+	public function setUp()
     {
 
         $colectivo144Negro = new Colectivo( '144 Negro' , 'Rosario Bus' );
