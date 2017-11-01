@@ -122,7 +122,7 @@ class Tarjeta implements Inter_Tarjeta
 		{
 			if( $lastDate )
 			{
-				if ( ( $fecha - strtotime( $lastDate ) ) > 86400 )
+				if ( $fecha - strtotime( $lastDate ) > 86400 )
 				{
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
 					{
