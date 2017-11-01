@@ -265,11 +265,11 @@ class TarjetaTest extends TestCase {
 
 		// Bicis en días diferentes
 
-		$tarjeta1->Pagar( $bici1234 , '2016/09/10 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici1234 , '2017/09/10 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->Pagar( $bici5678 , '2016/09/11 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici5678 , '2017/09/11 13:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) * 2 , $tarjeta1->Saldo() );
 
@@ -278,11 +278,11 @@ class TarjetaTest extends TestCase {
 
 		//Bicis en el mismo día
 
-		$tarjeta1->Pagar( $bici1234 , '2016/09/15 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici1234 , '2017/09/15 12:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
-		$tarjeta1->Pagar( $bici5678 , '2016/09/15 12:50' , 'regular' );
+		$tarjeta1->Pagar( $bici5678 , '2017/09/15 13:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta1->Saldo() );
 
