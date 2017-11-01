@@ -103,6 +103,9 @@ class TarjetaTest extends TestCase {
 	
 	public function testPago2()
 	{
+		
+		$tarjeta1 = new Tarjeta(1);
+		$tarjeta1->recargar( $monto );
 
 		///////////////////////////////////////////////////////////////////////*
 
