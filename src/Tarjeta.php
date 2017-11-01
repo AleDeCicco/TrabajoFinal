@@ -1,5 +1,4 @@
-<?php
-namespace TrabajoFinal;
+
 class Tarjeta implements Inter_Tarjeta
 {
 	
@@ -53,12 +52,26 @@ class Tarjeta implements Inter_Tarjeta
 		return $this->id;
 	}
 	
-	public function Pagar (Transporte $transporte , $tiempo , $franquicia)
+	public function pagar (Transporte $transporte , $tiempo , $franquicia)
 	{
-		$uViaje = array_search( ( $transporte instanceof Colectivo ), array_reverse( $this->ViajesRealizados ) );
+		
+		$uViaje = false;
 		$tiempoUViaje = false;
-		if($uViaje)
+		
+		for($i = sizeof($this->ViajesRealizados)-1 ; $i>=0 ; $i=$i-1){
+			
+			if ($transporte->Tipo() != 'Bicicleta'){
+				
+				$uViaje = $this->ViajesRealizados[$i];
+				echo "jojo";
+				break;
+			}
+		}
+		
+		if($uViaje){
 			$tiempoUViaje = strtotime( $uViaje->Tiempo() );
+			echo "xd";
+		}
 		$fecha = strtotime($tiempo);
 		if ( intval(strftime('%w',$fecha)) == 6 
 			&& intval(strftime('%H',$fecha)) < 22 
@@ -87,10 +100,21 @@ class Tarjeta implements Inter_Tarjeta
 		else
 			$pTransbordo = 1;
 		$lastDate = False;
-		$bicicleteo = array_search( ( $transporte instanceof Bicicleta ), array_reverse( $this->ViajesRealizados ) );
+
+		$bicicleteo = false;
+
+		for($i = sizeof($this->ViajesRealizados)-1 ; $i>=0 ; $i=$i-1){
+			
+			if ($transporte->Tipo() == 'Bicicleta'){
+				
+				$bicicleteo = $this->ViajesRealizados[$i];
+				break;
+			}
+		}
+		
 		if ( $bicicleteo )
 		{
-			$lastDate = ( $this->ViajesRealizados[ $bicicleteo ] )->Tiempo();
+			$lastDate = $bicicleteo->Tiempo();
 		}
 		$valor_boleto = 9.7;
 		$pBoleto;
@@ -266,7 +290,7 @@ class Tarjeta implements Inter_Tarjeta
 				{
 					if ( $pTransbordo == 0.6 )
 					{
-						
+			
 						if ( ( $this->saldo - ( $pTransbordo * $valor_boleto ) ) >= 0 )
 						{
 							if ($uViaje
@@ -407,6 +431,5 @@ class Tarjeta implements Inter_Tarjeta
 			array_push( $this->ViajesRealizados , $viaje_actual );
 			return new Boleto ( $viaje_actual , $this );
 		} 
-	}
-	
+	}	
 }
