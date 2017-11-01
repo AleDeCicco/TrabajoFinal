@@ -63,7 +63,7 @@ class Tarjeta implements Inter_Tarjeta
 		
 		for($i = sizeof($this->ViajesRealizados)-1 ; $i>=0 ; $i=$i-1){
 			
-			if ($transporte->Tipo() != 'Bicicleta'){
+			if ($this->ViajesRealizados[$i] != 'Bicicleta'){
 				
 				$uViaje = $this->ViajesRealizados[$i];
 				break;
@@ -106,7 +106,7 @@ class Tarjeta implements Inter_Tarjeta
 
 		for($i = sizeof($this->ViajesRealizados)-1 ; $i>=0 ; $i=$i-1){
 			
-			if ($transporte->Tipo() == 'Bicicleta'){
+			if ($this->ViajesRealizados[$i] == 'Bicicleta'){
 				
 				$bicicleteo = $this->ViajesRealizados[$i];
 				break;
@@ -121,11 +121,11 @@ class Tarjeta implements Inter_Tarjeta
 		$pBoleto;
 		$etiqueta;
 		$bTransbordo;
-		if( $bicicleteo )
+		if( $transporte->Tipo() == 'Bicicleta' )
 		{
 			if( $lastDate )
 			{
-				if ( strftime('%D',$lastDate) != strftime('%D',$tiempo))
+				if ( strftime('%m/%d/%y',$lastDate) != strftime('%m/%d/%y',$tiempo))
 				{
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
 					{
