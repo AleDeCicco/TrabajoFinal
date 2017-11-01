@@ -174,7 +174,7 @@ class Tarjeta implements Inter_Tarjeta
 							} else {
 								
 								if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 ){
-									$boleto=0.5;
+									$pBoleto=0.5;
 									$etiqueta="medio";
 									$bTransbordo = 1;
 								} else {
@@ -303,7 +303,7 @@ class Tarjeta implements Inter_Tarjeta
 							} else {
 								
 								if ( ( $this->saldo - ( $valor_boleto ) ) >= 0 ){
-									$boleto=1;
+									$pBoleto=1;
 									$etiqueta="regular";
 									$bTransbordo = 1;
 								} else {
