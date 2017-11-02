@@ -555,10 +555,5 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta2->Saldo() );
 
 	}
-
-	public function testViajePlus(){
-
-
-	}
 	
 }
