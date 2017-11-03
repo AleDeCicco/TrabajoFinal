@@ -4,7 +4,7 @@ namespace TrabajoFinal;
 
 use PHPUnit\Framework\TestCase;
 
-class Tarjetatest extends TestCase {
+class TarjetaTest extends TestCase {
 
 	public function testId(){
 
