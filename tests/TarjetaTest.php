@@ -604,7 +604,7 @@ class TarjetaTest extends TestCase {
 		$colectivo153Negro = new Colectivo( '153Negro' , 'Rosario Bus' );
 		$colectivo113 = new Colectivo( '113' , 'Rosario Bus' );
 
-		$monto = 3
+		$monto = 3;
 
 		$tarjeta6 = new Tarjeta(6);
 		$tarjeta6->recargar($monto);
