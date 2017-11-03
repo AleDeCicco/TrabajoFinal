@@ -70,7 +70,7 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$this->assertEquals('regular' , end($array)->Tipo());
+		$this->assertEquals('normal' , end($array)->Tipo());
 		$this->assertEquals(9.7 , end($array)->Monto());
 		$this->assertEquals(Colectivo , end($array)->Transporte());
 		$this->assertEquals('2017/07/24 10:50' , end($array)->Tiempo());
