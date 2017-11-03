@@ -575,6 +575,10 @@ class TarjetaTest extends TestCase {
 
 	public function testViajesPlus(){
 
+		////////////////////////////////////////////////////////////////
+
+		//primer viaje comun (Plus)
+
 		$colectivo153Negro = new Colectivo( '153Negro' , 'Rosario Bus' );
 		$colectivo113 = new Colectivo( '113' , 'Rosario Bus' );
 
@@ -585,7 +589,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta5->Pagar ('$colectivo153Negro' , '2017/07/15 13:50' , 'regular' );
 
-		$array = $tarjeta1->viajesRealizados();
+		$array = $tarjeta5->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
