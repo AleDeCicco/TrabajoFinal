@@ -32,6 +32,13 @@ class Tarjeta implements Inter_Tarjeta
 		$this->plus = 0;
 	}
 	
+	public function Cambiar ($monto){
+
+		$this->saldo = $monto;
+		$this->plus = 0;
+
+	}
+	
 	public function Vaciar ()
 	{
 		
