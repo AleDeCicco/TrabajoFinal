@@ -60,10 +60,10 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$this->assertEquals('regular' , $tarjeta1->viajesRealizados()->Tipo());
-		$this->assertEquals(9.7 , $tarjeta1->viajesRealizados()->Monto());
-		$this->assertEquals(Colectivo , $tarjeta1->viajesRealizados()->Transporte());
-		$this->assertEquals('2017/07/24 10:50' , $tarjeta1->viajesRealizados()->Tiempo());
+		$this->assertEquals('regular' , end($tarjeta1->viajesRealizados())->Tipo());
+		$this->assertEquals(9.7 , end($tarjeta1->viajesRealizados())->Monto());
+		$this->assertEquals(Colectivo , end($tarjeta1->viajesRealizados())->Transporte());
+		$this->assertEquals('2017/07/24 10:50' , end($tarjeta1->viajesRealizados())->Tiempo());
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 11:45' , 'regular' );
 
