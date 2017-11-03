@@ -8,7 +8,7 @@ class BoletoTest extends TestCase {
 
 	public function testBoleto(){
 
-		$tarjeta = new tarjeta(10);
+		$tarjeta = new Tarjeta(10);
 		$array = $tarjeta->viajesRealizados();
 		$boleto = new Boleto(end($array),$tarjeta);
 
