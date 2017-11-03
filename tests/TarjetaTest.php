@@ -639,9 +639,9 @@ class TarjetaTest extends TestCase {
 
 		//viaje comun plus 2
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 18:50' , 'regular' );
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 19:00' , 'regular' );
 
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
+		$this->assertEquals('imposible' , end($array)->Tipo());
 
 		///////////////////////////////////////////////////////////////*
 
