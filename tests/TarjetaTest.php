@@ -72,7 +72,7 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals('normal' , end($array)->Tipo());
 		$this->assertEquals(9.7 , end($array)->Monto());
-		$this->assertEquals('Colectivo' , end($array)->Transporte());
+		$this->assertEquals($colectivo144Negro , end($array)->Transporte());
 		$this->assertEquals('2017/07/24 10:50' , end($array)->Tiempo());
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 11:45' , 'regular' );
