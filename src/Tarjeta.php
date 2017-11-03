@@ -32,13 +32,6 @@ class Tarjeta implements Inter_Tarjeta
 		$this->plus = 0;
 	}
 	
-	public function Cambiar ($monto){
-
-		$this->saldo = $monto;
-		$this->plus = 0;
-
-	}
-	
 	public function Vaciar ()
 	{
 		
@@ -184,34 +177,26 @@ class Tarjeta implements Inter_Tarjeta
 									$bTransbordo = 1;
 								} else {
 								
-									if ( $this->plus == 0){
+									if ( $plus == 0){
 										
-										$this->plus += 1;
+										$plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
-									} elseif ($plus == 1){
- -										$plus += 1;
- -										$pBoleto=1;
- -										$etiqueta="viajeplus2";
- -										$bTransbordo=1;
- -									} else{
- -										$pBoleto=0;
- -										$etiqueta="imposible";
- -										$bTransbordo=1;
 									}
 								}
 							}
+						}
 						else
 						{
-							if ( $this->plus == 0){
+							if ( $plus == 0){
 								
-								$this->plus += 1;
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($this->plus == 1){
-								$this->plus += 1;
+							} elseif ($plus == 1){
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -233,14 +218,14 @@ class Tarjeta implements Inter_Tarjeta
 						}
 						else
 						{
-							if ( $this->plus == 0){
+							if ( $plus == 0){
 								
-								$this->plus += 1;
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($this->plus == 1){
-								$this->plus += 1;
+							} elseif ($plus == 1){
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -264,14 +249,24 @@ class Tarjeta implements Inter_Tarjeta
 					}
 					else
 					{
-						if ( $this->plus == 0){
+						if ( $plus == 0){
 							
-							$this->plus += 1;
+							$plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
-						} 
+						} elseif ($plus == 1){
+							$plus += 1;
+							$pBoleto=1;
+							$etiqueta="viajeplus2";
+							$bTransbordo=1;
+							$this->first = 1;
+						} else{
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
+						}
 					}
 				}
 			}
@@ -297,15 +292,15 @@ class Tarjeta implements Inter_Tarjeta
 									$bTransbordo = 1;
 								} else {
 								
-									if ( $this->plus == 0){
+									if ( $plus == 0){
 										
-										$this->plus += 1;
+										$plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
 										
-									} elseif ($this->plus == 1) {
-										$this->plus += 1;
+									} elseif ($plus == 1) {
+										$plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus2";
 										$bTransbordo=1;
@@ -329,14 +324,14 @@ class Tarjeta implements Inter_Tarjeta
 							$bTransbordo=1;
 						}else
 						{
-							if ( $this->plus == 0){
+							if ( $plus == 0){
 								
-								$this->plus += 1;
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($this->plus == 1){
-								$this->plus += 1;
+							} elseif ($plus == 1){
+								$plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -358,13 +353,23 @@ class Tarjeta implements Inter_Tarjeta
 						$bTransbordo=1;
 						$this->first = 1;
 					} else {
-						if ( $this->plus == 0){
+						if ( $plus == 0){
 							
-							$this->plus += 1;
+							$plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
+						} elseif ($plus == 1) {
+							$plus += 1;
+							$pBoleto=1;
+							$etiqueta="viajeplus2";
+							$bTransbordo=1;
+							$this->first = 1;
+						} else{
+							$pBoleto=0;
+							$etiqueta="imposible";
+							$bTransbordo=1;
 						}
 					}
 				}
