@@ -391,7 +391,7 @@ class Tarjeta implements Inter_Tarjeta
 				$bTransbordo=1;
 			}
 		}
-		if ($etiqueta == "imposible"){
+		if ($etiqueta == 'imposible'){
 		
 			echo "El saldo es insuficiente";
 			return false;
