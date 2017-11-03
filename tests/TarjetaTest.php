@@ -621,7 +621,7 @@ class TarjetaTest extends TestCase {
 
 		$monto = 3;
 		$tarjeta6->Vaciar();
-		$tarjeta6->recargar($monto);
+		$tarjeta6->Cambiar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 16:50' , 'regular' );
 
@@ -637,11 +637,19 @@ class TarjetaTest extends TestCase {
 
 		///////////////////////////////////////////////////////////////*
 
+		//viaje comun plus 2
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 18:50' , 'regular' );
+
+		$this->assertEquals('viajeplus2' , end($array)->Tipo());
+
+		///////////////////////////////////////////////////////////////*
+
 		//viaje medio plus
 
 		$monto = 3;
 		$tarjeta6->Vaciar();
-		$tarjeta6->recargar($monto);
+		$tarjeta6->Cambiar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 20:30' , 'medio' );
 
@@ -661,7 +669,7 @@ class TarjetaTest extends TestCase {
 
 		$monto = 10;
 		$tarjeta6->Vaciar();
-		$tarjeta6->recargar($monto);
+		$tarjeta6->Cambiar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:40' , 'regular' );
 		$tarjeta6->Pagar($colectivo113 , '2017/07/16 19:50' , 'regular');
@@ -678,7 +686,7 @@ class TarjetaTest extends TestCase {
 
 		$monto = 6;
 		$tarjeta6->Vaciar();
-		$tarjeta6->recargar($monto);
+		$tarjeta6->Cambiar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'regular' );
 		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'regular');
@@ -695,7 +703,7 @@ class TarjetaTest extends TestCase {
 
 		$monto = 3;
 		$tarjeta6->Vaciar();
-		$tarjeta6->recargar($monto);
+		$tarjeta6->Cambiar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:30' , 'medio' );
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:40' , 'medio' );
@@ -705,6 +713,14 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
+
+		///////////////////////////////////////////////////////////////*
+
+		//no existe etiqueta
+
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
+
 
 	}
 	
