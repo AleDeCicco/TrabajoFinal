@@ -625,7 +625,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 16:50' , 'regular' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
@@ -635,7 +635,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo113 , '2017/07/15 18:50' , 'regular' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -645,7 +645,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 19:00' , 'regular' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('imposible' , end($array)->Tipo());
 
@@ -659,7 +659,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 20:30' , 'medio' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
@@ -669,7 +669,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo113 , '2017/07/15 22:30' , 'medio' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -684,13 +684,13 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:40' , 'regular' );
 		$tarjeta6->Pagar($colectivo113 , '2017/07/16 19:50' , 'regular');
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 20:00' , 'regular');
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -705,13 +705,13 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'regular' );
 		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'regular');
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 20:00' , 'regular');
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -726,13 +726,13 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:30' , 'medio' );
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:40' , 'medio' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -743,7 +743,7 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
 
-		$array = $tarjeta5->viajesRealizados();
+		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('noexiste' , end($array)->Tipo());
 
