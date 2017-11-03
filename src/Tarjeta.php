@@ -41,6 +41,14 @@ class Tarjeta implements Inter_Tarjeta
 		$this->ViajesRealizados = array();
 		
 	}
+	
+	public function Cambiar ($monto){
+
+		$this->saldo = $monto;
+		$this->plus = 0;
+
+	}
+	
 	public function Saldo ()
 	{
 		return $this->saldo;
