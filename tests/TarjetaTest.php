@@ -587,7 +587,7 @@ class TarjetaTest extends TestCase {
 		$tarjeta5 = new Tarjeta(5);
 		$tarjeta5->recargar( $monto );
 
-		$tarjeta5->Pagar ('$colectivo153Negro' , '2017/07/15 13:50' , 'regular' );
+		$tarjeta5->Pagar ($colectivo153Negro , '2017/07/15 13:50' , 'regular' );
 
 		$array = $tarjeta5->viajesRealizados();
 
