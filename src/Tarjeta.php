@@ -202,7 +202,6 @@ class Tarjeta implements Inter_Tarjeta
 									}
 								}
 							}
-						}
 						else
 						{
 							if ( $this->plus == 0){
