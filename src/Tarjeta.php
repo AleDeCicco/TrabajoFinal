@@ -54,6 +54,12 @@ class Tarjeta implements Inter_Tarjeta
 		return $this->id;
 	}
 	
+	public function Cambiar ($monto){
+
+		$this->saldo = $monto;
+
+	}
+	
 	public function pagar (Transporte $transporte , $tiempo , $franquicia)
 	{
 		
