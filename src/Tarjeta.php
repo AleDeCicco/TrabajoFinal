@@ -318,6 +318,23 @@ class Tarjeta implements Inter_Tarjeta
 									}
 								}
 							}
+						} else {
+						
+							if ( $this->plus == 0){
+								
+								$this->plus += 1;
+								$pBoleto=1;
+								$etiqueta="viajeplus1";
+								$bTransbordo=1;
+							} elseif ($this->plus == 1){
+								$this->plus += 1;
+								$pBoleto=1;
+								$etiqueta="viajeplus2";
+								$bTransbordo=1;
+							} else{
+								$pBoleto=0;
+								$etiqueta="imposible";
+								$bTransbordo=1;
 						}
 					}
 					else
