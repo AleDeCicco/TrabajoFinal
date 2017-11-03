@@ -631,7 +631,7 @@ class TarjetaTest extends TestCase {
 
 		//viaje comun plus 2
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 18:50' , 'regular' );
+		$tarjeta6->Pagar($colectivo113 , '2017/07/15 18:50' , 'regular' );
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
@@ -659,7 +659,7 @@ class TarjetaTest extends TestCase {
 
 		//viaje medio plus 2
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 22:30' , 'medio' );
+		$tarjeta6->Pagar($colectivo113 , '2017/07/15 22:30' , 'medio' );
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
