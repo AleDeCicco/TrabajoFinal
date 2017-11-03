@@ -1,4 +1,4 @@
-<?php
+?php
 namespace TrabajoFinal;
 class Tarjeta implements Inter_Tarjeta
 {
@@ -30,6 +30,13 @@ class Tarjeta implements Inter_Tarjeta
 		}
 		$this->saldo -= $this->plus * 9.7;
 		$this->plus = 0;
+	}
+
+	public function Cambiar ($monto){
+
+		$this->saldo = $monto;
+		$this->plus = 0;
+
 	}
 	
 	public function Vaciar ()
