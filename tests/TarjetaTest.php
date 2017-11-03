@@ -571,19 +571,6 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta2->Saldo() );
 
-		//Bicis sin saldo
-
-
-		$tarjeta2->Vaciar();
-		$tarjeta2->recargar( 15 );
-
-		$tarjeta2->Pagar( $bici4321 , '2017/07/16 13:20' , 'regular' );
-		$tarjeta2->Pagar( $bici4321 , '2017/07/17 13:30' , 'regular' );
-
-		$array = $tarjeta2->viajesRealizados();
-
-		$this->assertEquals('imposible' , end($array)->Tipo());
-
 
 	}
 
