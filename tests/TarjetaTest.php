@@ -60,6 +60,11 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
+		$this->assertEquals('regular' , end($ViajesRealizados)->Tipo());
+		$this->assertEquals(9.7 , end($ViajesRealizados)->Monto());
+		$this->assertEquals(Colectivo , end($ViajesRealizados)->Transporte());
+		$this->assertEquals('2017/07/24 10:50' , end($ViajesRealizados)->Tiempo());
+
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 11:45' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 2 ) , $tarjeta1->Saldo() );
@@ -530,6 +535,8 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta2->Vaciar();
 		$tarjeta2->recargar( $monto );
+
+
 
 		// Bicis en días diferentes
 
