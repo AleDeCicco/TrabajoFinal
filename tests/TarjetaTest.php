@@ -573,9 +573,12 @@ class TarjetaTest extends TestCase {
 
 		//Bicis sin saldo
 
+
 		$tarjeta2->Vaciar();
+		$tarjeta2->recargar( 15 );
 
 		$tarjeta2->Pagar( $bici4321 , '2017/07/16 13:20' , 'regular' );
+		$tarjeta2->Pagar( $bici4321 , '2017/07/17 13:30' , 'regular' );
 
 		$array = $tarjeta2->viajesRealizados();
 
