@@ -9,16 +9,23 @@ class BoletoTest extends TestCase {
 	public function testBoleto(){
 
 		$tarjeta = new Tarjeta(10);
+		
+		$tipo = 'regular'
+		$monto = 9.7
+		$colectivo = new Colectivo('Colectivo144Negro','Rosario Bus');
+		$tiempo = '2017/11/03 11:50';
+		
+		$viaje = new Viaje ($tipo,$monto,$transporte,$tiempo);
+		
+		$boleto = new Boleto($viaje,$tarjeta);
+		
 		$array = $tarjeta->viajesRealizados();
-		$boleto = new Boleto(end($array),$tarjeta);
 
-		$this->assertEquals(end($array)->Tipo(),$boleto->viaje->Tipo());
+		$this->assertEquals($tipo,$boleto->Viaje()->Tipo());
 
-		$this->assertEquals($tarjeta->Saldo(),$boleto->tarjeta->Saldo());
-
-		$this->assertEquals(end($array)->Tipo(),$boleto->Viaje()->Tipo());
-
-		$this->assertEquals($tarjeta->Saldo(),$boleto->Tarjeta()->Saldo());
+		$this->assertEquals($tarjeta->Id(),$boleto->Tarjeta()->Id());
+		
+		
 
 	}
 
