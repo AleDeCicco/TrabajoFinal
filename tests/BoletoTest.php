@@ -15,7 +15,7 @@ class BoletoTest extends TestCase {
 		$colectivo = new Colectivo('Colectivo144Negro','Rosario Bus');
 		$tiempo = '2017/11/03 11:50';
 		
-		$viaje = new Viaje ($tipo,$monto,$transporte,$tiempo);
+		$viaje = new Viaje ($tipo,$monto,$colectivo,$tiempo);
 		
 		$boleto = new Boleto($viaje,$tarjeta);
 		
