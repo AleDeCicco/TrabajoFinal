@@ -664,7 +664,7 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->recargar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:40' , 'regular' );
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:50' , 'regular');
+		$tarjeta6->Pagar($colectivo113 , '2017/07/16 19:50' , 'regular');
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
@@ -681,7 +681,7 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->recargar($monto);
 
 		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'regular' );
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:50' , 'regular');
+		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'regular');
 
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
@@ -689,6 +689,22 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
+		///////////////////////////////////////////////////////////////*
+
+		//viaje que no puede ser transbordo entonces tambien es medio boleto (misma linea)
+
+		$monto = 3;
+		$tarjeta6->Vaciar();
+		$tarjeta6->recargar($monto);
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:30' , 'medio' );
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:40' , 'medio' );
+
+		$this->assertEquals('viajeplus1' , end($array)->Tipo());
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
+
+		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
 	}
 	
