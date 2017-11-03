@@ -6,11 +6,11 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 
-	public function testid(){
+	public function testId(){
 
 		$tarjeta4 = new Tarjeta(4);
 
-		$this->assertEquals( $tarjeta4->id , $tarjeta4->Id() );
+		$this->assertEquals( 4 , $tarjeta4->Id() );
 
 	}
 
