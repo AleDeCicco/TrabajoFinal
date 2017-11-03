@@ -183,15 +183,6 @@ class Tarjeta implements Inter_Tarjeta
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
-									} elseif ($plus == 1){
-										$plus += 1;
-										$pBoleto=1;
-										$etiqueta="viajeplus2";
-										$bTransbordo=1;
-									} else{
-										$pBoleto=0;
-										$etiqueta="imposible";
-										$bTransbordo=1;
 									}
 								}
 							}
