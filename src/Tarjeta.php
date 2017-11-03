@@ -41,13 +41,6 @@ class Tarjeta implements Inter_Tarjeta
 		$this->ViajesRealizados = array();
 		
 	}
-	
-	public function Cambiar ($monto){
-
-		$this->saldo = $monto;
-
-	}
-	
 	public function Saldo ()
 	{
 		return $this->saldo;
@@ -391,22 +384,22 @@ class Tarjeta implements Inter_Tarjeta
 				$bTransbordo=1;
 			}
 		}
-		if ($this->etiqueta == "imposible"){
+		if ($etiqueta == "imposible"){
 		
 			echo "El saldo es insuficiente";
 			return false;
-		} elseif ($this->etiqueta == 'noexiste'){
+		} elseif ($etiqueta == 'noexiste'){
 		
 			echo "La franquicia no existe";
 			return false;
 		} else {
 			
-			if (this->$etiqueta != 'viajeplus1' && $this->etiqueta != 'viajeplus2'){
+			if ($etiqueta != 'viajeplus1' && $etiqueta != 'viajeplus2'){
 			
-				$viaje_actual = new Viaje ($this->etiqueta , $this->pBoleto * $this->bTransbordo * $this->valor_boleto , $this->transporte , $this->tiempo);
+				$viaje_actual = new Viaje ($etiqueta , $pBoleto * $bTransbordo * $valor_boleto , $transporte , $tiempo);
 				$this->saldo -= $pBoleto * $bTransbordo * $valor_boleto;
 			} else {
-				$viaje_actual = new Viaje ($this->etiqueta , $this->valor_boleto , $this->transporte , $this->tiempo);
+				$viaje_actual = new Viaje ($etiqueta , $valor_boleto , $transporte , $tiempo);
 			}
 			
 			array_push( $this->ViajesRealizados , $viaje_actual );
