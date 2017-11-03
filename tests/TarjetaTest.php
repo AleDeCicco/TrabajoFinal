@@ -66,12 +66,14 @@ class TarjetaTest extends TestCase {
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 10:50' , 'regular' );
 
+		$array = $tarjeta1->viajesRealizados();
+
 		$this->assertEquals( $monto - 9.7 , $tarjeta1->Saldo() );
 
-		$this->assertEquals('regular' , end($tarjeta1->viajesRealizados())->Tipo());
-		$this->assertEquals(9.7 , end($tarjeta1->viajesRealizados())->Monto());
-		$this->assertEquals(Colectivo , end($tarjeta1->viajesRealizados())->Transporte());
-		$this->assertEquals('2017/07/24 10:50' , end($tarjeta1->viajesRealizados())->Tiempo());
+		$this->assertEquals('regular' , end($array)->Tipo());
+		$this->assertEquals(9.7 , end($array)->Monto());
+		$this->assertEquals(Colectivo , end($array)->Transporte());
+		$this->assertEquals('2017/07/24 10:50' , end($array)->Tiempo());
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 11:45' , 'regular' );
 
