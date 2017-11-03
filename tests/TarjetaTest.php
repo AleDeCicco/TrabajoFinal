@@ -72,7 +72,7 @@ class TarjetaTest extends TestCase {
 
 		$this->assertEquals('normal' , end($array)->Tipo());
 		$this->assertEquals(9.7 , end($array)->Monto());
-		$this->assertEquals(Colectivo , end($array)->Transporte());
+		$this->assertEquals('Colectivo' , end($array)->Transporte());
 		$this->assertEquals('2017/07/24 10:50' , end($array)->Tiempo());
 
 		$tarjeta1->Pagar( $colectivo144Negro , '2017/07/24 11:45' , 'regular' );
@@ -570,6 +570,24 @@ class TarjetaTest extends TestCase {
 		$tarjeta2->Pagar( $bici8765 , '2017/07/15 13:50' , 'regular' );
 
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta2->Saldo() );
+
+	}
+
+	public function testViajesPlus(){
+
+		$colectivo153Negro = new Colectivo( '153Negro' , 'Rosario Bus' );
+		$colectivo113 = new Colectivo( '113' , 'Rosario Bus' );
+
+		$monto = 3;
+
+		$tarjeta5 = new Tarjeta(5);
+		$tarjeta5->recargar( $monto );
+
+		$tarjeta5->Pagar ('$colectivo153Negro' , '2017/07/15 13:50' , 'regular' );
+
+		$array = $tarjeta1->viajesRealizados();
+
+		$this->assertEquals('viajeplus1' , end($array)->Tipo());
 
 	}
 	
