@@ -123,7 +123,7 @@ class Tarjeta implements Inter_Tarjeta
 		
 		$valor_boleto = 9.7;
 		$pBoleto;
-		$etiqueta;
+		$etiqueta="imposible";
 		$bTransbordo;
 		if( $transporte->Tipo() == 'Bicicleta' )
 		{
