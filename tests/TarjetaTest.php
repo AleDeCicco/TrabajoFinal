@@ -642,13 +642,11 @@ class TarjetaTest extends TestCase {
 
 		///////////////////////////////////////////////////////////////*
 
-		//viaje comun plus 2
+		//viaje sin saldo
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 19:00' , 'regular' );
+		$f = $tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:00' , 'regular' );
 
-		$array = $tarjeta6->viajesRealizados();
-
-		$this->assertEquals('imposible' , end($array)->Tipo());
+		$this->assertFalse($f);
 
 		///////////////////////////////////////////////////////////////*
 
@@ -742,11 +740,9 @@ class TarjetaTest extends TestCase {
 		//no existe etiqueta
 
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
+		$f = $tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'abc' );
 
-		$array = $tarjeta6->viajesRealizados();
-
-		$this->assertEquals('noexiste' , end($array)->Tipo());
+		$this->assertFalse( $f );
 
 
 	}
