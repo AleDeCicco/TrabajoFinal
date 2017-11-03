@@ -392,11 +392,9 @@ class Tarjeta implements Inter_Tarjeta
 		}
 		if ($etiqueta == "imposible"){
 		
-			echo "El saldo es insuficiente";
 			return false;
 		} elseif ($etiqueta == 'noexiste'){
 		
-			echo "La franquicia no existe";
 			return false;
 		} else {
 			
@@ -409,7 +407,7 @@ class Tarjeta implements Inter_Tarjeta
 			}
 			
 			array_push( $this->ViajesRealizados , $viaje_actual );
-			//return new Boleto ( $viaje_actual , $this );
+			return new Boleto ( $viaje_actual , $this );
 		} 
 	}	
 }
