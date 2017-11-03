@@ -1,4 +1,4 @@
-?php
+<?php
 namespace TrabajoFinal;
 class Tarjeta implements Inter_Tarjeta
 {
@@ -30,13 +30,6 @@ class Tarjeta implements Inter_Tarjeta
 		}
 		$this->saldo -= $this->plus * 9.7;
 		$this->plus = 0;
-	}
-
-	public function Cambiar ($monto){
-
-		$this->saldo = $monto;
-		$this->plus = 0;
-
 	}
 	
 	public function Vaciar ()
@@ -184,9 +177,9 @@ class Tarjeta implements Inter_Tarjeta
 									$bTransbordo = 1;
 								} else {
 								
-									if ( $plus == 0){
+									if ( $this->plus == 0){
 										
-										$plus += 1;
+										$this->plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
@@ -196,14 +189,14 @@ class Tarjeta implements Inter_Tarjeta
 						}
 						else
 						{
-							if ( $plus == 0){
+							if ( $this->plus == 0){
 								
-								$plus += 1;
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($plus == 1){
-								$plus += 1;
+							} elseif ($this->plus == 1){
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -225,14 +218,14 @@ class Tarjeta implements Inter_Tarjeta
 						}
 						else
 						{
-							if ( $plus == 0){
+							if ( $this->plus == 0){
 								
-								$plus += 1;
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($plus == 1){
-								$plus += 1;
+							} elseif ($this->plus == 1){
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -256,15 +249,15 @@ class Tarjeta implements Inter_Tarjeta
 					}
 					else
 					{
-						if ( $plus == 0){
+						if ( $this->plus == 0){
 							
-							$plus += 1;
+							$this->plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
-						} elseif ($plus == 1){
-							$plus += 1;
+						} elseif ($this->plus == 1){
+							$this->plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus2";
 							$bTransbordo=1;
@@ -299,15 +292,15 @@ class Tarjeta implements Inter_Tarjeta
 									$bTransbordo = 1;
 								} else {
 								
-									if ( $plus == 0){
+									if ( $this->plus == 0){
 										
-										$plus += 1;
+										$this->plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus1";
 										$bTransbordo=1;
 										
-									} elseif ($plus == 1) {
-										$plus += 1;
+									} elseif ($this->plus == 1) {
+										$this->plus += 1;
 										$pBoleto=1;
 										$etiqueta="viajeplus2";
 										$bTransbordo=1;
@@ -331,14 +324,14 @@ class Tarjeta implements Inter_Tarjeta
 							$bTransbordo=1;
 						}else
 						{
-							if ( $plus == 0){
+							if ( $this->plus == 0){
 								
-								$plus += 1;
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus1";
 								$bTransbordo=1;
-							} elseif ($plus == 1){
-								$plus += 1;
+							} elseif ($this->plus == 1){
+								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
 								$bTransbordo=1;
@@ -360,15 +353,15 @@ class Tarjeta implements Inter_Tarjeta
 						$bTransbordo=1;
 						$this->first = 1;
 					} else {
-						if ( $plus == 0){
+						if ( $this->plus == 0){
 							
-							$plus += 1;
+							$this->plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus1";
 							$bTransbordo=1;
 							$this->first = 1;
-						} elseif ($plus == 1) {
-							$plus += 1;
+						} elseif ($this->plus == 1) {
+							$this->plus += 1;
 							$pBoleto=1;
 							$etiqueta="viajeplus2";
 							$bTransbordo=1;
