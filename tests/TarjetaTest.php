@@ -701,8 +701,8 @@ class TarjetaTest extends TestCase {
 		$tarjeta6->Vaciar();
 		$tarjeta6->Cambiar($monto);
 
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'regular' );
-		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'regular');
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'medio' );
+		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'medio');
 
 		$array = $tarjeta6->viajesRealizados();
 
@@ -718,7 +718,7 @@ class TarjetaTest extends TestCase {
 
 		//viaje que no puede ser transbordo entonces tambien es medio boleto (misma linea)
 
-		$monto = 3;
+		$monto = 5;
 		$tarjeta6->Vaciar();
 		$tarjeta6->Cambiar($monto);
 
