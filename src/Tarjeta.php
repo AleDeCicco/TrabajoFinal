@@ -192,6 +192,7 @@ class Tarjeta implements Inter_Tarjeta
  -										$pBoleto=0;
  -										$etiqueta="imposible";
  -										$bTransbordo=1;
+									}
 								}
 							}
 						}
