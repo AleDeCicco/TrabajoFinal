@@ -583,7 +583,7 @@ class TarjetaTest extends TestCase {
 		
 		$array = $tarjeta2->viajesRealizados();
 		
-		$this->assertEquals('imposible' , end($array)->Tipo());
+		$this->assertEquals('MiBiciTuBici' , end($array)->Tipo());
 	}
 
 	public function testViajesPlusPrimero(){
