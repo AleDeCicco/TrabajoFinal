@@ -312,22 +312,8 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta2->Saldo() );
 		$tarjeta2->Pagar( $bici8765 , '2017/07/15 13:50' , 'regular' );
 		$this->assertEquals( $monto - ( 9.7 * 1.5 ) , $tarjeta2->Saldo() );
-		
-		//Bici sin saldo
-		
-		$monto = 9.7 * 1.5;
-		$tarjeta2->Vaciar();
-		$tarjeta2->recargar( $monto );
-		
-		$tarjeta2->Pagar( $bici4321 , '2017/07/15 12:50' , 'regular' );
-		
-		$tarjeta2->Pagar( $bici4321 , '2017/07/16 13:30' , 'regular' );
-		
-		$array = $tarjeta2->viajesRealizados();
-		
-		$this->assertEquals('imposible' , end($array)->Tipo());
 	}
-	public function testViajesPlusPrimero(){
+	public function testViajesPlus(){
 		////////////////////////////////////////////////////////////////
 		//primer viaje comun (Plus)
 		$colectivo153Negro = new Colectivo( '153Negro' , 'Rosario Bus' );
@@ -335,97 +321,9 @@ class TarjetaTest extends TestCase {
 		$monto = 3;
 		$tarjeta5 = new Tarjeta(5);
 		$tarjeta5->recargar( $monto );
-		$tarjeta5->Pagar($colectivo153Negro , '2017/07/15 13:50' , 'regular' );
+		$tarjeta5->Pagar ($colectivo153Negro , '2017/07/15 13:50' , 'regular' );
 		$array = $tarjeta5->viajesRealizados();
 		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-	}
-	public function testViajesPlusPrimero2(){
-		////////////////////////////////////////////////////////////////*
-		//primer viaje medio boleto (Plus)
-		$colectivo153Negro = new Colectivo( '153Negro' , 'Rosario Bus' );
-		$colectivo113 = new Colectivo( '113' , 'Rosario Bus' );
-		$monto = 3;
-		$tarjeta6 = new Tarjeta(6);
-		$tarjeta6->recargar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 13:50' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje comun plus
-		$monto = 3;
-		$tarjeta6->Vaciar();
-		$tarjeta6->Cambiar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 16:50' , 'regular' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje comun plus 2
-		$tarjeta6->Pagar($colectivo113 , '2017/07/15 18:50' , 'regular' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje sin saldo
-		$f = $tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:00' , 'regular' );
-		$this->assertFalse($f);
-		///////////////////////////////////////////////////////////////*
-		//viaje medio plus
-		$monto = 3;
-		$tarjeta6->Vaciar();
-		$tarjeta6->Cambiar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/15 20:30' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje medio plus 2
-		$tarjeta6->Pagar($colectivo113 , '2017/07/15 22:30' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
-		
-		///////////////////////////////////////////////////////////////*
-		//imposible
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 22:30' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('imposible' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje transbordo regular
-		$monto = 10;
-		$tarjeta6->Vaciar();
-		$tarjeta6->Cambiar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 19:40' , 'regular' );
-		$tarjeta6->Pagar($colectivo113 , '2017/07/16 19:50' , 'regular');
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 20:00' , 'regular');
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje transbordo medio
-		$monto = 6;
-		$tarjeta6->Vaciar();
-		$tarjeta6->Cambiar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 19:40' , 'medio' );
-		$tarjeta6->Pagar($colectivo113 , '2017/07/17 19:50' , 'medio');
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/17 20:00' , 'regular');
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//viaje que no puede ser transbordo entonces tambien es medio boleto (misma linea)
-		$monto = 5;
-		$tarjeta6->Vaciar();
-		$tarjeta6->Cambiar($monto);
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:30' , 'medio' );
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:40' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus1' , end($array)->Tipo());
-		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
-		$array = $tarjeta6->viajesRealizados();
-		$this->assertEquals('viajeplus2' , end($array)->Tipo());
-		///////////////////////////////////////////////////////////////*
-		//no existe etiqueta
-		$f = $tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'abc' );
-		$this->assertFalse( $f );
 	}
 	
 }
