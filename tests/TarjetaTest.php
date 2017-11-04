@@ -573,7 +573,7 @@ class TarjetaTest extends TestCase {
 		
 		//Bici sin saldo
 		
-		$monto = 9.7 * 1.5
+		$monto = 9.7 * 1.5;
 		$tarjeta2->Vaciar();
 		$tarjeta2->recargar( $monto );
 		
