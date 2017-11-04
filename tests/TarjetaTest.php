@@ -573,17 +573,15 @@ class TarjetaTest extends TestCase {
 		
 		//Bici sin saldo
 		
-		$monto = 9.7 * 1.5;
+		$monto = 2;
 		$tarjeta2->Vaciar();
 		$tarjeta2->recargar( $monto );
-		
-		$tarjeta2->Pagar( $bici4321 , '2017/07/15 12:50' , 'regular' );
 		
 		$tarjeta2->Pagar( $bici4321 , '2017/07/16 13:30' , 'regular' );
 		
 		$array = $tarjeta2->viajesRealizados();
 		
-		$this->assertEquals('MiBiciTuBici' , end($array)->Tipo());
+		$this->assertEquals('imposible' , end($array)->Tipo());
 	}
 
 	public function testViajesPlusPrimero(){
