@@ -2,20 +2,19 @@
 
 namespace TrabajoFinal;
 
-abstract class Transporte
-{
+abstract class Transporte{
 	
 	protected $nombre = '';
 	
 	protected $tipo = '';
 	
-	public function Nombre()
-	{
+	public function Nombre(){
+		
 		return $this->nombre;
 	}
 	
-	public function Tipo()
-	{
+	public function Tipo(){
+		
 		return $this->tipo;
 	}
 } 
