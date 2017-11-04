@@ -2,8 +2,7 @@
 
 namespace TrabajoFinal;
 
-class Boleto implements Inter_Boleto
-{
+class Boleto implements Inter_Boleto{
 
 	protected $viaje;
 	protected $tarjeta;
