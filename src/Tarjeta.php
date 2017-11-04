@@ -54,6 +54,12 @@ class Tarjeta implements Inter_Tarjeta
 		return $this->id;
 	}
 	
+	public function Cambiar ($monto){
+
+		$this->saldo = $monto;
+
+	}
+	
 	public function pagar (Transporte $transporte , $tiempo , $franquicia)
 	{
 		
@@ -117,7 +123,7 @@ class Tarjeta implements Inter_Tarjeta
 		
 		$valor_boleto = 9.7;
 		$pBoleto;
-		$etiqueta;
+		$etiqueta="imposible";
 		$bTransbordo;
 		if( $transporte->Tipo() == 'Bicicleta' )
 		{
@@ -147,9 +153,18 @@ class Tarjeta implements Inter_Tarjeta
 			}
 			else
 			{
-				$pBoleto=1.5;
-				$etiqueta="MiBiciTuBici";
-				$bTransbordo=1;
+				if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
+				{
+					$pBoleto=1.5;
+					$etiqueta="MiBiciTuBici";
+					$bTransbordo=1;
+				}
+				else
+				{
+					$pBoleto=0;
+					$etiqueta="imposible";
+					$bTransbordo=1;
+				}
 			}	
 		}
 		else
@@ -312,6 +327,26 @@ class Tarjeta implements Inter_Tarjeta
 									}
 								}
 							}
+						} else {
+						
+							if ( $this->plus == 0){
+								
+								$this->plus += 1;
+								$pBoleto=1;
+								$etiqueta="viajeplus1";
+								$bTransbordo=1;
+								
+							} elseif ($this->plus == 1){
+								
+								$this->plus += 1;
+								$pBoleto=1;
+								$etiqueta="viajeplus2";
+								$bTransbordo=1;
+							} else{
+								$pBoleto=0;
+								$etiqueta="imposible";
+								$bTransbordo=1;
+							}
 						}
 					}
 					else
@@ -386,11 +421,9 @@ class Tarjeta implements Inter_Tarjeta
 		}
 		if ($etiqueta == "imposible"){
 		
-			echo "El saldo es insuficiente";
 			return false;
 		} elseif ($etiqueta == 'noexiste'){
 		
-			echo "La franquicia no existe";
 			return false;
 		} else {
 			
@@ -403,7 +436,7 @@ class Tarjeta implements Inter_Tarjeta
 			}
 			
 			array_push( $this->ViajesRealizados , $viaje_actual );
-			//return new Boleto ( $viaje_actual , $this );
+			return new Boleto ( $viaje_actual , $this );
 		} 
 	}	
 }
