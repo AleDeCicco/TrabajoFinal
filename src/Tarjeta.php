@@ -1,7 +1,6 @@
 <?php
 namespace TrabajoFinal;
-class Tarjeta implements Inter_Tarjeta
-{
+class Tarjeta implements Inter_Tarjeta{
 	
 	protected $saldo;
 	protected $ViajesRealizados = [];
@@ -14,26 +13,25 @@ class Tarjeta implements Inter_Tarjeta
 		$this->id = $id;
 		$this->plus = 0;
 	}
-	public function Recargar ( $monto )
-	{
-		if ( $monto == 332 )
-		{
+	public function Recargar ( $monto ){
+		
+		if ( $monto == 332 ){
+			
 			$this->saldo += 388;
 		}
-		elseif( $monto == 624 )
-		{
+		elseif( $monto == 624 ){
+			
 			$this->saldo += 776;
 		}
-		else
-		{
+		else{
+			
 			$this->saldo += $monto;
 		}
 		$this->saldo -= $this->plus * 9.7;
 		$this->plus = 0;
 	}
 	
-	public function Vaciar ()
-	{
+	public function Vaciar (){
 		
 		$this->saldo = 0;
 		$this->first = 0;
@@ -41,16 +39,16 @@ class Tarjeta implements Inter_Tarjeta
 		$this->ViajesRealizados = array();
 		
 	}
-	public function Saldo ()
-	{
+	public function Saldo (){
+		
 		return $this->saldo;
 	}
-	public function viajesRealizados()
-	{
+	public function viajesRealizados(){
+		
 		return $this->ViajesRealizados;
 	}
-	public function Id()
-	{
+	public function Id(){
+		
 		return $this->id;
 	}
 	
@@ -60,8 +58,7 @@ class Tarjeta implements Inter_Tarjeta
 
 	}
 	
-	public function pagar (Transporte $transporte , $tiempo , $franquicia)
-	{
+	public function pagar (Transporte $transporte , $tiempo , $franquicia){
 		
 		$uViaje = false;
 		$tiempoUViaje = false;
@@ -116,8 +113,8 @@ class Tarjeta implements Inter_Tarjeta
 			}
 		}
 		
-		if ( $bicicleteo )
-		{
+		if ( $bicicleteo ){
+			
 			$lastDate = $bicicleteo->Tiempo();
 		}
 		
@@ -125,47 +122,46 @@ class Tarjeta implements Inter_Tarjeta
 		$pBoleto;
 		$etiqueta="imposible";
 		$bTransbordo;
-		if( $transporte->Tipo() == 'Bicicleta' )
-		{
-			if( $lastDate )
-			{
-				if ( $fecha - strtotime( $lastDate ) > 86400 )
-				{
-					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
-					{
+		if( $transporte->Tipo() == 'Bicicleta' ){
+			
+			if( $lastDate ){
+				
+				if ( $fecha - strtotime( $lastDate ) > 86400 ){
+					
+					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 ){
+						
 						$pBoleto=1.5;
 						$etiqueta="MiBiciTuBici";
 						$bTransbordo=1;
 					}
 				} 
-				else
-				{
+				else{
+					
 					$pBoleto=0;
 					$etiqueta="MiBiciTuBici";
 					$bTransbordo=1;
 				}
 			}
-			else
-			{
-				if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
-				{
+			else{
+				
+				if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 ){
+					
 					$pBoleto=1.5;
 					$etiqueta="MiBiciTuBici";
 					$bTransbordo=1;
 				}
 			}	
 		}
-		else
-		{
-			if ( $franquicia == 'medio' )
-			{
-				if ( $this->first )
-				{
-					if ( $pTransbordo == 0.6 )
-					{
+		else{
+			
+			if ( $franquicia == 'medio' ){
+				
+				if ( $this->first ){
+					
+					if ( $pTransbordo == 0.6 ){
 						
-						if ( ( $this->saldo - ( 0.5 * $pTransbordo * $valor_boleto ) ) >= 0 )
-						{
+						if ( ( $this->saldo - ( 0.5 * $pTransbordo * $valor_boleto ) ) >= 0 ){
+							
 							if ($uViaje
 							    ->Transporte()->Nombre() != $transporte->Nombre()){
 								    
@@ -195,8 +191,8 @@ class Tarjeta implements Inter_Tarjeta
 								}
 							}
 						}
-						else
-						{
+						else{
+							
 							if ( $this->plus == 0){
 								
 								$this->plus += 1;
@@ -211,17 +207,16 @@ class Tarjeta implements Inter_Tarjeta
 							}
 						}	
 					}
-					else
-					{
+					else{
 						
-						if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
-						{
+						if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 ){
+							
 							$pBoleto=0.5;
 							$etiqueta="medionormal";
 							$bTransbordo=1;
 						}
-						else
-						{
+						else{
+							
 							if ( $this->plus == 0){
 								
 								$this->plus += 1;
@@ -237,18 +232,17 @@ class Tarjeta implements Inter_Tarjeta
 						}
 					}
 				}
-				else
-				{
+				else{
 					
-					if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 )
-					{
+					if ( ( $this->saldo - ( 0.5 * $valor_boleto ) ) >= 0 ){
+						
 						$pBoleto=0.5;
 						$etiqueta="medionormal";
 						$bTransbordo=1;
 						$this->first = 1;
 					}
-					else
-					{
+					else{
+						
 						if ( $this->plus == 0){
 							
 							$this->plus += 1;
@@ -260,14 +254,14 @@ class Tarjeta implements Inter_Tarjeta
 					}
 				}
 			}
-			elseif ( $franquicia == 'regular' )
-			{
-				if ( $this->first )
-				{
-					if ( $pTransbordo == 0.6 )
-					{
-						if ( ( $this->saldo - ( $pTransbordo * $valor_boleto ) ) >= 0 )
-						{
+			elseif ( $franquicia == 'regular' ){
+				
+				if ( $this->first ){
+					
+					if ( $pTransbordo == 0.6 ){
+						
+						if ( ( $this->saldo - ( $pTransbordo * $valor_boleto ) ) >= 0 ){
+							
 							if ($uViaje
 							    ->Transporte()->Nombre() != $transporte->Nombre()){
 								    
@@ -316,16 +310,15 @@ class Tarjeta implements Inter_Tarjeta
 							}
 						}
 					}
-					else
-					{
+					else{
 						
-						if ( ( $this->saldo - $valor_boleto ) >= 0 )
-						{
+						if ( ( $this->saldo - $valor_boleto ) >= 0 ){
+							
 							$pBoleto=1;
 							$etiqueta="normal";
 							$bTransbordo=1;
-						}else
-						{
+						}else{
+							
 							if ( $this->plus == 0){
 								
 								$this->plus += 1;
@@ -341,11 +334,10 @@ class Tarjeta implements Inter_Tarjeta
 						}
 					}
 				}
-				else
-				{
+				else{
 					
-					if ( ( $this->saldo - $valor_boleto ) >= 0 )
-					{
+					if ( ( $this->saldo - $valor_boleto ) >= 0 ){
+						
 						$pBoleto=1;
 						$etiqueta="normal";
 						$bTransbordo=1;
