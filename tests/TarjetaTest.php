@@ -579,7 +579,9 @@ class TarjetaTest extends TestCase {
 		
 		$tarjeta2->Pagar( $bici4321 , '2017/07/15 12:50' , 'regular' );
 		
-		$tarjeta2->Pagar( $bici4321 , '2017/07/15 12:50' , 'regular' );
+		$tarjeta2->Pagar( $bici4321 , '2017/07/16 12:50' , 'regular' );
+		
+		$array = $tarjeta2->viajesRealizados();
 		
 		$this->assertEquals('imposible' , end($array)->Tipo());
 	}
