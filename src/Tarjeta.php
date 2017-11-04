@@ -78,7 +78,7 @@ class Tarjeta implements Inter_Tarjeta
 		if($uViaje){
 			$tiempoUViaje = strtotime( $uViaje->Tiempo() );
 		}
-		$fecha = strtotime($tiempo);
+		$fecha = $tiempo;
 		if ( intval(strftime('%w',$fecha)) == 6 
 			&& intval(strftime('%H',$fecha)) < 22 
 			&& intval(strftime('%H',$fecha)) >= 14 ){
@@ -129,7 +129,7 @@ class Tarjeta implements Inter_Tarjeta
 		{
 			if( $lastDate )
 			{
-				if ( $fecha - strtotime( $lastDate ) > 86400 )
+				if ( strtotime($fecha) - strtotime( $lastDate ) > 86400 )
 				{
 					if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
 					{
