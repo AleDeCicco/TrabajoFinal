@@ -2,8 +2,7 @@
 
 namespace TrabajoFinal;
 
-interface Inter_Boleto
-{
+interface Inter_Boleto{
 
 	public function __construct(Viaje $viaje, Tarjeta $tarjeta);
 	public function Viaje();
