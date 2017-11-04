@@ -683,6 +683,16 @@ class TarjetaTest extends TestCase {
 		$array = $tarjeta6->viajesRealizados();
 
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
+		
+		///////////////////////////////////////////////////////////////*
+
+		//imposible
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 22:30' , 'medio' );
+
+		$array = $tarjeta6->viajesRealizados();
+
+		$this->assertEquals('imposible' , end($array)->Tipo());
 
 		///////////////////////////////////////////////////////////////*
 
