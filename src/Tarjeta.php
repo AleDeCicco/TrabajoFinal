@@ -137,12 +137,6 @@ class Tarjeta implements Inter_Tarjeta
 						$etiqueta="MiBiciTuBici";
 						$bTransbordo=1;
 					}
-					else
-					{
-						$pBoleto=0;
-						$etiqueta="imposible";
-						$bTransbordo=1;
-					}
 				} 
 				else
 				{
@@ -157,12 +151,6 @@ class Tarjeta implements Inter_Tarjeta
 				{
 					$pBoleto=1.5;
 					$etiqueta="MiBiciTuBici";
-					$bTransbordo=1;
-				}
-				else
-				{
-					$pBoleto=0;
-					$etiqueta="imposible";
 					$bTransbordo=1;
 				}
 			}	
@@ -203,10 +191,6 @@ class Tarjeta implements Inter_Tarjeta
 										$pBoleto=1;
 										$etiqueta="viajeplus2";
 										$bTransbordo=1;
-									} else{
-										$pBoleto=0;
-										$etiqueta="imposible";
-										$bTransbordo=1;
 									}
 								}
 							}
@@ -223,10 +207,6 @@ class Tarjeta implements Inter_Tarjeta
 								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
-								$bTransbordo=1;
-							} else{
-								$pBoleto=0;
-								$etiqueta="imposible";
 								$bTransbordo=1;
 							}
 						}	
@@ -252,10 +232,6 @@ class Tarjeta implements Inter_Tarjeta
 								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
-								$bTransbordo=1;
-							} else{
-								$pBoleto=0;
-								$etiqueta="imposible";
 								$bTransbordo=1;
 							}
 						}
@@ -319,10 +295,6 @@ class Tarjeta implements Inter_Tarjeta
 										$etiqueta="viajeplus2";
 										$bTransbordo=1;
 										
-									} else{
-										$pBoleto=0;
-										$etiqueta="imposible";
-										$bTransbordo=1;
 									}
 								}
 							}
@@ -340,10 +312,6 @@ class Tarjeta implements Inter_Tarjeta
 								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
-								$bTransbordo=1;
-							} else{
-								$pBoleto=0;
-								$etiqueta="imposible";
 								$bTransbordo=1;
 							}
 						}
@@ -368,10 +336,6 @@ class Tarjeta implements Inter_Tarjeta
 								$this->plus += 1;
 								$pBoleto=1;
 								$etiqueta="viajeplus2";
-								$bTransbordo=1;
-							} else{
-								$pBoleto=0;
-								$etiqueta="imposible";
 								$bTransbordo=1;
 							}
 						}
