@@ -17,7 +17,6 @@ class BicicletaTest extends TestCase {
 		$this->assertEquals( '1234' , $bici->nombre() );
 		$this->assertEquals( 'Bicicleta' , $bici->tipo() );
 
-		
 	}
 
 }
