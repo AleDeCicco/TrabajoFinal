@@ -153,9 +153,18 @@ class Tarjeta implements Inter_Tarjeta
 			}
 			else
 			{
-				$pBoleto=1.5;
-				$etiqueta="MiBiciTuBici";
-				$bTransbordo=1;
+				if ( ( $this->saldo - ( 1.5 * $valor_boleto ) ) >= 0 )
+				{
+					$pBoleto=1.5;
+					$etiqueta="MiBiciTuBici";
+					$bTransbordo=1;
+				}
+				else
+				{
+					$pBoleto=0;
+					$etiqueta="imposible";
+					$bTransbordo=1;
+				}
 			}	
 		}
 		else
