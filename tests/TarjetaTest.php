@@ -748,6 +748,27 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals('viajeplus2' , end($array)->Tipo());
 
 		///////////////////////////////////////////////////////////////*
+		
+		//viaje que alcanza para medio y transbordo, pero no para solo medio y no puede haber transbordo
+
+		$monto = 5;
+		$tarjeta6->Vaciar();
+		$tarjeta6->Cambiar($monto);
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:30' , 'medio' );
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:40' , 'medio' );
+
+		$array = $tarjeta6->viajesRealizados();
+
+		$this->assertEquals('viajeplus1' , end($array)->Tipo());
+
+		$tarjeta6->Pagar($colectivo153Negro , '2017/07/16 11:50' , 'medio' );
+
+		$array = $tarjeta6->viajesRealizados();
+
+		$this->assertEquals('viajeplus2' , end($array)->Tipo());
+
+		///////////////////////////////////////////////////////////////*
 
 		//no existe etiqueta
 
